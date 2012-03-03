@@ -7,24 +7,25 @@
 
 class Particle;
 class Renderer;
+class Operator;
+class Initializer;
 
 class Emitter {
 public:
   Emitter(const Vector4D &pos, const Vector4D &vel, int itv = 1000, int dur = -1, int max = MAX_PARTICLES);
-  ~Emitter();
+  virtual ~Emitter();
 
-  void update(int elapsed);
-  void draw();
+  // These should be called on every animation frame
+  virtual void update(int elapsed);
+  virtual void draw();
 
+  // Set renderer, initializer and operator objects
+  // They will be deallocated on ~Emitter
   void renderer(Renderer* rend);
+  void addOperator(Operator *opr);
+  void addInitializer(Initializer* initr);
 
-  //@TODO: add Renderer, Intializers, Operators
-
-private:
-  // Do not copy me!
-  Emitter(const Emitter &);
-  Emitter& operator=(const Emitter &);
-
+protected:
   Vector4D _position;
   Vector4D _velocity; //@NOTE: We shouldn't call this velocity
   int _interval;
@@ -32,13 +33,18 @@ private:
 
   int _maxParticles;
 
+  bool createParticle();
+  void removeParticle(int index);
+
+private:
+  // Do not copy me!
+  Emitter(const Emitter &);
+  Emitter& operator=(const Emitter &);
+
   Renderer* _renderer;
   Particle** _particles;
 
   int _elapsed;
-
-  bool createParticle();
-  void removeParticle(int index);
 };
 
 #endif // EMITTER_H

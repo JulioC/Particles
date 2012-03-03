@@ -10,7 +10,7 @@ class Renderer;
 
 class Emitter {
 public:
-    Emitter(const Vector4D &pos, const Vector4D &vel, int itv = 1, int dur = -1, int max = MAX_PARTICLES);
+    Emitter(const Vector4D &pos, const Vector4D &vel, int itv = 1000, int dur = -1, int max = MAX_PARTICLES);
     ~Emitter();
 
     void update(int elapsed);

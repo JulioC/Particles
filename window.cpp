@@ -9,5 +9,5 @@ Window::Window() {
     mainLayout->addWidget(glWidget);
     setLayout(mainLayout);
 
-    setWindowTitle(tr("Particles!"));
+    setWindowTitle(tr("Particles"));
 }

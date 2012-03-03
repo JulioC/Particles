@@ -14,7 +14,7 @@ void DummyRenderer::render(Particle *p) {
   glLoadIdentity();
   glTranslatef(p->position.x, p->position.y, p->position.z);
   glBegin(GL_POINTS);
-  glVertex3f(0, 0, 0);
+    glVertex3f(0, 0, 0);
   glEnd();
   glPopMatrix();
 }

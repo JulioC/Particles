@@ -6,6 +6,7 @@
 #define MAX_PARTICLES 1024
 
 class Particle;
+class Renderer;
 
 class Emitter {
 public:
@@ -14,6 +15,8 @@ public:
 
     void update(int elapsed);
     void draw();
+
+    void renderer(Renderer* rend);
 
     //@TODO: add Renderer, Intializers, Operators
 
@@ -29,6 +32,7 @@ private:
 
     int _maxParticles;
 
+    Renderer* _renderer;
     Particle** _particles;
 
     int _elapsed;

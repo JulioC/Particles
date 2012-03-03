@@ -3,6 +3,7 @@
 #include <stddef.h>
 
 #include "particle.h"
+#include "renderer.h"
 
 Emitter::Emitter(const Vector4D &pos, const Vector4D &vel, int itv, int dur, int max) :
     _position(pos),
@@ -10,7 +11,8 @@ Emitter::Emitter(const Vector4D &pos, const Vector4D &vel, int itv, int dur, int
     _interval(itv),
     _duration(dur),
     _maxParticles(max),
-    _particles(),
+    _renderer(NULL),
+    _particles(NULL),
     _elapsed(0) {
     _particles = new Particle*[_maxParticles];
     for(int i = 0; i < _maxParticles; i++) {
@@ -54,8 +56,24 @@ void Emitter::update(int elapsed) {
         createParticle();
         _elapsed -= _interval;
     }
+}
 
-    //@TODO: create new particles
+void Emitter::draw() {
+    if(_renderer) {
+        for(int i = 0; i < _maxParticles; i++) {
+            if(_particles[i]) {
+                _renderer->render(_particles[i]);
+            }
+        }
+    }
+}
+
+void Emitter::renderer(Renderer *rend) {
+    if(_renderer) {
+        delete[] _renderer;
+    }
+
+    _renderer = rend;
 }
 
 bool Emitter::createParticle() {

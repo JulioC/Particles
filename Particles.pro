@@ -1,6 +1,6 @@
 QT += core gui opengl
 
-RENDERERS = dummy
+RENDERERS = dummyrenderer
 INITIALIZERS =
 OPERATORS = decay
 
@@ -28,14 +28,14 @@ OTHER_FILES += \
 
 # Add  Renders, Initializers and Operators
 for(name, RENDERERS) {
-  HEADERS += renderers/$${name}renderer.h
-  SOURCES += renderers/$${name}renderer.cpp
+  HEADERS += renderers/$${name}.h
+  SOURCES += renderers/$${name}.cpp
 }
 for(name, INITIALIZER) {
-  HEADERS += initializers/$${name}initializer.h
-  SOURCES += initializers/$${name}initializer.cpp
+  HEADERS += initializers/$${name}.h
+  SOURCES += initializers/$${name}.cpp
 }
 for(name, OPERATORS) {
-  HEADERS += operators/$${name}operator.h
-  SOURCES += operators/$${name}operator.cpp
+  HEADERS += operators/$${name}.h
+  SOURCES += operators/$${name}.cpp
 }

@@ -4,7 +4,7 @@
 
 #include "emitter.h"
 #include "renderers/dummyrenderer.h"
-#include "operators/decayoperator.h"
+#include "operators/decay.h"
 
 GLWidget::GLWidget(QWidget *parent) :
   QGLWidget(parent),
@@ -58,7 +58,7 @@ void GLWidget::initializeGL() {
 
   _emitter = new Emitter(Vector4D(), Vector4D(1, 1, 1, 1), 0.1);
   _emitter->renderer(new DummyRenderer());
-  _emitter->addOperator(new DecayOperator());
+  _emitter->addOperator(new Decay());
 }
 
 void GLWidget::paintGL() {

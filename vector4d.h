@@ -17,7 +17,7 @@ public:
     // Constructors
     Vector4D(void);
     Vector4D(vec_t X, vec_t Y, vec_t Z, vec_t W);
-    Vector4D(const float *pFloat);
+    Vector4D(const vec_t *array);
     Vector4D(const Vector4D &);
 
     // Assignment

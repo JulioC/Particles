@@ -7,7 +7,7 @@ class Emitter;
 class Initializer {
 public:
   virtual ~Initializer() {};
-  virtual void apply(Particle *p, Emitter *e=0) = 0;
+  virtual void apply(Particle *p, Emitter *e = 0) = 0;
 };
 
 #endif // INITIALIZER_H

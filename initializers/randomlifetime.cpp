@@ -14,5 +14,5 @@ RandomLifetime::~RandomLifetime() {
 }
 
 void RandomLifetime::apply(Particle *p, Emitter *e) {
-  p->lifetime = _min + (float)rand()/(float)RAND_MAX * _range;
+  p->lifetime = _min + _range * (float)rand()/(float)RAND_MAX;
 }

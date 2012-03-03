@@ -1,6 +1,6 @@
 #include "randomlifetime.h"
 
-#include "stdlib.h"
+#include <stdlib.h>
 
 #include "particle.h"
 

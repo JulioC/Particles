@@ -1,6 +1,6 @@
 #include "particle.h"
 
-#include "float.h"
+#include <float.h>
 
 Particle::Particle(const Vector4D &p, const Vector4D &v) :
   position(p),

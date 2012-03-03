@@ -5,6 +5,7 @@ class Particle;
 
 class Renderer {
 public:
+    virtual ~Renderer() {};
     virtual void render(Particle* p) = 0;
 };
 

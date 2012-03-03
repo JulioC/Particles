@@ -13,6 +13,8 @@ public:
     int lifetime;
     //@TODO: Add color
 
+    bool dead;
+
     Particle(const Vector4D &p, const Vector4D &v);
 
 private:

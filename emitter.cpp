@@ -36,19 +36,15 @@ void Emitter::update(int elapsed) {
         if(_particles[i]) {
             Particle* p = _particles[i];
 
-            // This should be done with an operator (?)
+            // Update particle state (do it with operators?)
             p->position += p->velocity * elapsedf;
-
-            // This should be done with an operator
             p->lifetime -= elapsed;
 
             //@TODO: Apply operators on p
 
-            /*if(p->lifetime < 0) {
-                delete p;
-                _particles[i] = NULL;
-
-            }*/
+            if(p->dead) {
+                removeParticle(i);
+            }
         }
     }
 

@@ -6,7 +6,8 @@ HEADERS += \
     window.h \
     glwidget.h \
     emitter.h \
-    renderer.h
+    renderer.h \
+    dummyrenderer.h
 
 SOURCES += \
     particle.cpp \
@@ -14,4 +15,5 @@ SOURCES += \
     main.cpp \
     window.cpp \
     glwidget.cpp \
-    emitter.cpp
+    emitter.cpp \
+    dummyrenderer.cpp

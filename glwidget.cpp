@@ -30,7 +30,7 @@ QSize GLWidget::sizeHint() const {
 void GLWidget::animate()
 {
     int current = _elapsedTimer->elapsed();
-    float elapsed = (float)(current - _lastFrameTime) / 1000.0f;
+    int elapsed = (float)(current - _lastFrameTime);
     _lastFrameTime = current;
 
     _emitter->update(elapsed);

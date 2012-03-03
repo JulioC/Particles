@@ -81,10 +81,10 @@ Vector4D& Vector4D::operator-=(const Vector4D &other) {
 }
 
 Vector4D& Vector4D::operator*=(vec_t val) {
-    x *= fl;
-    y *= fl;
-    z *= fl;
-    w *= fl;
+    x *= val;
+    y *= val;
+    z *= val;
+    w *= val;
     return *this;
 }
 

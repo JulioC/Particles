@@ -6,7 +6,7 @@ typedef float vec_t;
 
 /**
  * 4D Vector
- * Implementation borrowed from Valve
+ * Implementation based on Valve's
  */
 class Vector4D
 {
@@ -18,25 +18,23 @@ public:
     Vector4D(void);
     Vector4D(vec_t X, vec_t Y, vec_t Z, vec_t W);
     Vector4D(const vec_t *array);
-    Vector4D(const Vector4D &);
 
-    // Assignment
-    Vector4D& operator=(const Vector4D &);
+    // Copy
+    Vector4D(const Vector4D &other);
+    Vector4D& operator=(const Vector4D &other);
+    void toArray(vec_t *dst);
 
     // Comparassion
-    bool operator==(const Vector4D& v) const;
-    bool operator!=(const Vector4D& v) const;
+    bool operator==(const Vector4D &other) const;
+    bool operator!=(const Vector4D &other) const;
 
     // Arithmetic
     Vector4D& operator+=(const Vector4D &v);
     Vector4D& operator-=(const Vector4D &v);
     Vector4D& operator*=(const Vector4D &v);
-    Vector4D& operator*=(vec_t s);
+    Vector4D& operator*=(vec_t val);
     Vector4D& operator/=(const Vector4D &v);
-    Vector4D& operator/=(vec_t s);
-
-    // Conversion
-    void toArray(vec_t *dst);
+    Vector4D& operator/=(vec_t val);
 
 private:
 };

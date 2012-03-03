@@ -10,5 +10,7 @@ DecayOperator::~DecayOperator() {
 }
 
 void DecayOperator::apply(Particle *p, int elapsed) {
-  if()
+  if(p->lifetime < 0) {
+    p->dead = true;
+  }
 }

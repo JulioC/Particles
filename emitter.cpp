@@ -13,7 +13,7 @@ Emitter::Emitter(const Vector4D &pos, const Vector4D &vel, int itv, int dur, int
     _maxParticles(max),
     _renderer(NULL),
     _particles(NULL),
-    _elapsed(0) {
+    _elapsed(itv) {
     _particles = new Particle*[_maxParticles];
     for(int i = 0; i < _maxParticles; i++) {
         _particles[i] = NULL;

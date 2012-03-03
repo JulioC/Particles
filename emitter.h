@@ -3,7 +3,7 @@
 
 #include "vector4d.h"
 
-#define MAX_PARTICLES 1024
+#define MAX_PARTICLES 32
 
 class Particle;
 class Renderer;

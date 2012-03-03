@@ -17,3 +17,6 @@ SOURCES += \
     glwidget.cpp \
     emitter.cpp \
     dummyrenderer.cpp
+
+OTHER_FILES += \
+    README.md

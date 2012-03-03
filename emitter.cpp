@@ -78,7 +78,7 @@ void Emitter::renderer(Renderer *rend) {
 
 bool Emitter::createParticle() {
     int index;
-    for(int index  = 0; index  < _maxParticles; index ++) {
+    for(int index = 0; index < _maxParticles; index++) {
         if(!_particles[index]) break;
     }
 

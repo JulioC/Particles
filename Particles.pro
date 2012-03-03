@@ -5,7 +5,8 @@ HEADERS += \
     vector4d.h \
     window.h \
     glwidget.h \
-    emitter.h
+    emitter.h \
+    renderer.h
 
 SOURCES += \
     particle.cpp \

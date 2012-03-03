@@ -7,7 +7,7 @@
 #include "operator.h"
 #include "initializer.h"
 
-Emitter::Emitter(const Vector4D &pos, const Vector4D &vel, int itv, int max) :
+Emitter::Emitter(const Vector4D &pos, const Vector4D &vel, float itv, int max) :
   _position(pos),
   _velocity(vel),
   _interval(itv),
@@ -59,16 +59,12 @@ Emitter::~Emitter() {
   delete[] _operators;
 }
 
-void Emitter::update(int elapsed) {
-  float elapsedf = (float)elapsed/1000;
+void Emitter::update(float elapsed) {
   for(int i = 0; i < _maxParticles; i++) {
     if(_particles[i]) {
       Particle* p = _particles[i];
 
-      // Update particle state (do it with operators?)
-      p->position += p->velocity * elapsedf;
-      p->lifetime -= elapsed;
-
+      p->update(elapsed);
       applyOperators(p, elapsed);
 
       if(p->dead) {
@@ -164,7 +160,7 @@ void Emitter::applyInitializers(Particle *p) {
   }
 }
 
-void Emitter::applyOperators(Particle *p, int elapsed) {
+void Emitter::applyOperators(Particle *p, float elapsed) {
   int index;
   for(index = 0; index < MAX_OPERATORS; index++) {
     if(_operators[index]) {

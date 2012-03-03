@@ -4,6 +4,7 @@
 
 #include "emitter.h"
 #include "renderers/dummyrenderer.h"
+#include "operators/decayoperator.h"
 
 GLWidget::GLWidget(QWidget *parent) :
   QGLWidget(parent),
@@ -29,7 +30,7 @@ QSize GLWidget::sizeHint() const {
 
 void GLWidget::animate() {
   int current = _elapsedTimer->elapsed();
-  int elapsed = (float)(current - _lastFrameTime);
+  float elapsed = (float)(current - _lastFrameTime)/1000.0;
   _lastFrameTime = current;
 
   _emitter->update(elapsed);
@@ -55,8 +56,9 @@ void GLWidget::initializeGL() {
 
   //@TODO: do time management in a better way
 
-  _emitter = new Emitter(Vector4D(), Vector4D(1, 1, 1, 1), 100);
+  _emitter = new Emitter(Vector4D(), Vector4D(1, 1, 1, 1), 0.1);
   _emitter->renderer(new DummyRenderer());
+  _emitter->addOperator(new DecayOperator());
 }
 
 void GLWidget::paintGL() {

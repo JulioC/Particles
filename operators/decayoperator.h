@@ -8,7 +8,7 @@ public:
   DecayOperator();
   virtual ~DecayOperator();
 
-  virtual void apply(Particle *p, int elapsed);
+  virtual void apply(Particle *p, float elapsed);
 };
 
 #endif // DECAYOPERATOR_H

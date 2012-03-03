@@ -9,12 +9,14 @@ public:
   Vector4D position;
   Vector4D velocity;
 
-  int lifetime;
+  float lifetime;
   //@TODO: Add color
 
   bool dead;
 
   Particle(const Vector4D &p, const Vector4D &v);
+
+  void update(float elapsed);
 
 private:
   // Do not copy me!

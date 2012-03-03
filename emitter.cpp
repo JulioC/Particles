@@ -4,6 +4,8 @@
 
 #include "particle.h"
 #include "renderer.h"
+#include "operator.h"
+#include "initializer.h"
 
 Emitter::Emitter(const Vector4D &pos, const Vector4D &vel, int itv, int max) :
   _position(pos),
@@ -42,7 +44,7 @@ Emitter::~Emitter() {
 
   for(int i = 0; i < MAX_INITIALIZERS; i++) {
     if(_initializers[i]) {
-      //delete _initializers[i];
+      delete _initializers[i];
       _initializers[i] = NULL;
     }
   }
@@ -50,7 +52,7 @@ Emitter::~Emitter() {
 
   for(int i = 0; i < MAX_OPERATORS; i++) {
     if(_operators[i]) {
-      //delete _operators[i];
+      delete _operators[i];
       _operators[i] = NULL;
     }
   }
@@ -157,7 +159,7 @@ void Emitter::applyInitializers(Particle *p) {
   int index;
   for(index = 0; index < MAX_INITIALIZERS; index++) {
     if(_initializers[index]) {
-      //_initializers[index]->apply(p);
+      _initializers[index]->apply(p, this);
     }
   }
 }
@@ -166,7 +168,7 @@ void Emitter::applyOperators(Particle *p) {
   int index;
   for(index = 0; index < MAX_OPERATORS; index++) {
     if(_operators[index]) {
-      //_operators[index]->apply(p);
+      _operators[index]->apply(p, this);
     }
   }
 }

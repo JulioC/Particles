@@ -3,7 +3,7 @@
 #include <QTimer>
 
 #include "emitter.h"
-#include "dummyrenderer.h"
+#include "renderers/dummyrenderer.h"
 
 GLWidget::GLWidget(QWidget *parent) :
   QGLWidget(parent),

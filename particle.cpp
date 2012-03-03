@@ -1,7 +1,7 @@
 #include "particle.h"
 
-Particle::Particle(int l, const Vector4D &p, const Vector4D &v) :
-    lifetime(l),
+Particle::Particle(const Vector4D &p, const Vector4D &v) :
     position(p),
-    velocity(v) {
+    velocity(v),
+    lifetime(0) {
 }

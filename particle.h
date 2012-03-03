@@ -7,12 +7,13 @@ class Particle
 {
 public:
     // Exposed properties for ease of access
-    int lifetime;
     Vector4D position;
     Vector4D velocity;
+
+    int lifetime;
     //@TODO: Add color
 
-    Particle(int l, const Vector4D &p, const Vector4D &v);
+    Particle(const Vector4D &p, const Vector4D &v);
 
 private:
     // Do not copy me!

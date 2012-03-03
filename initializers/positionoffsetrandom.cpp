@@ -20,5 +20,5 @@ void PositionOffsetRandom::apply(Particle *p, Emitter *e) {
   pos.z = _min.z + _range.z * (float)rand()/(float)RAND_MAX;
   pos.w = _min.w + _range.w * (float)rand()/(float)RAND_MAX;
 
-  p->position = pos;
+  p->position += pos;
 }

@@ -28,13 +28,21 @@ public:
     bool operator==(const Vector4D &other) const;
     bool operator!=(const Vector4D &other) const;
 
-    // Arithmetic
+    // Arithmetic assignment
     Vector4D& operator+=(const Vector4D &v);
     Vector4D& operator-=(const Vector4D &v);
     Vector4D& operator*=(const Vector4D &v);
     Vector4D& operator*=(vec_t val);
     Vector4D& operator/=(const Vector4D &v);
     Vector4D& operator/=(vec_t val);
+
+    // Arithmetic
+    Vector4D operator+(const Vector4D &v);
+    Vector4D operator-(const Vector4D &v);
+    Vector4D operator*(const Vector4D &v);
+    Vector4D operator*(vec_t val);
+    Vector4D operator/(const Vector4D &v);
+    Vector4D operator/(vec_t val);
 
     //@TODO: Implement other Vector methods (length, normalize, etc)
 };

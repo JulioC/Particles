@@ -65,7 +65,7 @@ bool Vector4D::operator!=(Vector4D const &other) const {
 }
 
 //-----------------------------------------------------------------------------
-// Arithmetic
+// Arithmetic assignment
 //-----------------------------------------------------------------------------
 
 Vector4D& Vector4D::operator+=(const Vector4D &other) {
@@ -116,4 +116,34 @@ Vector4D& Vector4D::operator/=(const Vector4D &other) {
     z /= other.z;
     w /= other.w;
     return *this;
+}
+
+//-----------------------------------------------------------------------------
+// Arithmetic
+//-----------------------------------------------------------------------------
+
+Vector4D Vector4D::operator+(const Vector4D &other) {
+    return Vector4D(x + other.x, y + other.y, z + other.z, w + other.w);
+}
+
+Vector4D Vector4D::operator-(const Vector4D &other) {
+    return Vector4D(x - other.x, y - other.y, z - other.z, w - other.w);
+}
+
+Vector4D Vector4D::operator*(vec_t val) {
+    return Vector4D(x * val, y * val, z * val, w * val);
+}
+
+Vector4D Vector4D::operator*(const Vector4D &other) {
+    return Vector4D(x * other.x, y * other.y, z * other.z, w * other.w);
+}
+
+Vector4D Vector4D::operator/(vec_t val) {
+    //@NOTE: We shall do some checking for 0 here!
+    vec_t div = 1.0f / val;
+    return Vector4D(x * div, y * div, z * div, w * div);
+}
+
+Vector4D Vector4D::operator/(const Vector4D &other) {
+    return Vector4D(x / other.x, y / other.y, z / other.z, w / other.w);
 }

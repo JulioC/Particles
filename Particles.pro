@@ -7,9 +7,9 @@ HEADERS += \
   glwidget.h \
   emitter.h \
   renderer.h \
-  dummyrenderer.h \
   operator.h \
-  initializer.h
+  initializer.h \
+  renderers/dummyrenderer.h
 
 SOURCES += \
   particle.cpp \
@@ -18,7 +18,7 @@ SOURCES += \
   window.cpp \
   glwidget.cpp \
   emitter.cpp \
-  dummyrenderer.cpp
+  renderers/dummyrenderer.cpp
 
 OTHER_FILES += \
   README.md \

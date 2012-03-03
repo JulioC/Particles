@@ -8,6 +8,9 @@ DummyRenderer::DummyRenderer() :
   Renderer() {
 }
 
+DummyRenderer::~DummyRenderer() {
+}
+
 void DummyRenderer::render(Particle *p) {
   glColor4f(1.0, 1.0, 1.0, 1.0);
   glPushMatrix();

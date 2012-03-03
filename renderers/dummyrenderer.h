@@ -6,6 +6,7 @@
 class DummyRenderer : public Renderer {
 public:
   DummyRenderer();
+  virtual ~DummyRenderer();
 
   virtual void render(Particle *p);
 };

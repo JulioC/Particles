@@ -88,8 +88,7 @@ Vector4D& Vector4D::operator*=(vec_t val) {
     return *this;
 }
 
-Vector4D& Vector4D::operator*=(const Vector4D &other)
-{
+Vector4D& Vector4D::operator*=(const Vector4D &other) {
     x *= other.x;
     y *= other.y;
     z *= other.z;
@@ -97,8 +96,7 @@ Vector4D& Vector4D::operator*=(const Vector4D &other)
     return *this;
 }
 
-Vector4D& Vector4D::operator/=(vec_t val)
-{
+Vector4D& Vector4D::operator/=(vec_t val) {
     //@NOTE: We shall do some checking for 0 here!
     vec_t div = 1.0f / val;
     x *= div;
@@ -108,8 +106,7 @@ Vector4D& Vector4D::operator/=(vec_t val)
     return *this;
 }
 
-Vector4D& Vector4D::operator/=(const Vector4D &other)
-{
+Vector4D& Vector4D::operator/=(const Vector4D &other) {
     x /= other.x;
     y /= other.y;
     z /= other.z;

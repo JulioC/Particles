@@ -3,11 +3,11 @@
 #include <QtGui>
 
 Window::Window() {
-    glWidget = new GLWidget(this);
+  glWidget = new GLWidget(this);
 
-    QHBoxLayout *mainLayout = new QHBoxLayout(this);
-    mainLayout->addWidget(glWidget);
-    setLayout(mainLayout);
+  QHBoxLayout *mainLayout = new QHBoxLayout(this);
+  mainLayout->addWidget(glWidget);
+  setLayout(mainLayout);
 
-    setWindowTitle(tr("Particles"));
+  setWindowTitle(tr("Particles"));
 }

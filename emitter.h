@@ -10,35 +10,35 @@ class Renderer;
 
 class Emitter {
 public:
-    Emitter(const Vector4D &pos, const Vector4D &vel, int itv = 1000, int dur = -1, int max = MAX_PARTICLES);
-    ~Emitter();
+  Emitter(const Vector4D &pos, const Vector4D &vel, int itv = 1000, int dur = -1, int max = MAX_PARTICLES);
+  ~Emitter();
 
-    void update(int elapsed);
-    void draw();
+  void update(int elapsed);
+  void draw();
 
-    void renderer(Renderer* rend);
+  void renderer(Renderer* rend);
 
-    //@TODO: add Renderer, Intializers, Operators
+  //@TODO: add Renderer, Intializers, Operators
 
 private:
-    // Do not copy me!
-    Emitter(const Emitter &);
-    Emitter& operator=(const Emitter &);
+  // Do not copy me!
+  Emitter(const Emitter &);
+  Emitter& operator=(const Emitter &);
 
-    Vector4D _position;
-    Vector4D _velocity; //@NOTE: We shouldn't call this velocity
-    int _interval;
-    int _duration;
+  Vector4D _position;
+  Vector4D _velocity; //@NOTE: We shouldn't call this velocity
+  int _interval;
+  int _duration;
 
-    int _maxParticles;
+  int _maxParticles;
 
-    Renderer* _renderer;
-    Particle** _particles;
+  Renderer* _renderer;
+  Particle** _particles;
 
-    int _elapsed;
+  int _elapsed;
 
-    bool createParticle();
-    void removeParticle(int index);
+  bool createParticle();
+  void removeParticle(int index);
 };
 
 #endif // EMITTER_H

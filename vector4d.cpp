@@ -5,25 +5,25 @@
 //-----------------------------------------------------------------------------
 
 Vector4D::Vector4D(void) :
-    x(0),
-    y(0),
-    z(0),
-    w(0) {
-    x = y = z = w = .0;
+  x(0),
+  y(0),
+  z(0),
+  w(0) {
+  x = y = z = w = .0;
 }
 
 Vector4D::Vector4D(vec_t X, vec_t Y, vec_t Z, vec_t W) :
-    x(X),
-    y(Y),
-    z(Z),
-    w(W) {
+  x(X),
+  y(Y),
+  z(Z),
+  w(W) {
 }
 
 Vector4D::Vector4D(const vec_t *array) :
-    x(array[0]),
-    y(array[1]),
-    z(array[2]),
-    w(array[3]) {
+  x(array[0]),
+  y(array[1]),
+  z(array[2]),
+  w(array[3]) {
 }
 
 //-----------------------------------------------------------------------------
@@ -31,25 +31,25 @@ Vector4D::Vector4D(const vec_t *array) :
 //-----------------------------------------------------------------------------
 
 Vector4D::Vector4D(const Vector4D &other) :
-    x(other.x),
-    y(other.y),
-    z(other.z),
-    w(other.w) {
+  x(other.x),
+  y(other.y),
+  z(other.z),
+  w(other.w) {
 }
 
 Vector4D& Vector4D::operator=(const Vector4D &other) {
-    x = other.x;
-    y = other.y;
-    z = other.z;
-    w = other.w;
-    return *this;
+  x = other.x;
+  y = other.y;
+  z = other.z;
+  w = other.w;
+  return *this;
 }
 
 void Vector4D::toArray(vec_t *dst) {
-    dst[0] = x;
-    dst[1] = y;
-    dst[2] = z;
-    dst[3] = w;
+  dst[0] = x;
+  dst[1] = y;
+  dst[2] = z;
+  dst[3] = w;
 }
 
 //-----------------------------------------------------------------------------
@@ -57,11 +57,11 @@ void Vector4D::toArray(vec_t *dst) {
 //-----------------------------------------------------------------------------
 
 bool Vector4D::operator==(Vector4D const &other) const {
-    return (other.x == x) && (other.y == y) && (other.z == z) && (other.w == w);
+  return (other.x == x) && (other.y == y) && (other.z == z) && (other.w == w);
 }
 
 bool Vector4D::operator!=(Vector4D const &other) const {
-    return (other.x != x) || (other.y != y) || (other.z != z) || (other.w != w);
+  return (other.x != x) || (other.y != y) || (other.z != z) || (other.w != w);
 }
 
 //-----------------------------------------------------------------------------
@@ -69,53 +69,53 @@ bool Vector4D::operator!=(Vector4D const &other) const {
 //-----------------------------------------------------------------------------
 
 Vector4D& Vector4D::operator+=(const Vector4D &other) {
-    x += other.x;
-    y += other.y;
-    z += other.z;
-    w += other.w;
-    return *this;
+  x += other.x;
+  y += other.y;
+  z += other.z;
+  w += other.w;
+  return *this;
 }
 
 Vector4D& Vector4D::operator-=(const Vector4D &other) {
-    x -=other.x;
-    y -=other.y;
-    z -= other.z;
-    w -= other.w;
-    return *this;
+  x -=other.x;
+  y -=other.y;
+  z -= other.z;
+  w -= other.w;
+  return *this;
 }
 
 Vector4D& Vector4D::operator*=(vec_t val) {
-    x *= val;
-    y *= val;
-    z *= val;
-    w *= val;
-    return *this;
+  x *= val;
+  y *= val;
+  z *= val;
+  w *= val;
+  return *this;
 }
 
 Vector4D& Vector4D::operator*=(const Vector4D &other) {
-    x *= other.x;
-    y *= other.y;
-    z *= other.z;
-    w *= other.w;
-    return *this;
+  x *= other.x;
+  y *= other.y;
+  z *= other.z;
+  w *= other.w;
+  return *this;
 }
 
 Vector4D& Vector4D::operator/=(vec_t val) {
-    //@NOTE: We shall do some checking for 0 here!
-    vec_t div = 1.0f / val;
-    x *= div;
-    y *= div;
-    z *= div;
-    w *= div;
-    return *this;
+  //@NOTE: We shall do some checking for 0 here!
+  vec_t div = 1.0f / val;
+  x *= div;
+  y *= div;
+  z *= div;
+  w *= div;
+  return *this;
 }
 
 Vector4D& Vector4D::operator/=(const Vector4D &other) {
-    x /= other.x;
-    y /= other.y;
-    z /= other.z;
-    w /= other.w;
-    return *this;
+  x /= other.x;
+  y /= other.y;
+  z /= other.z;
+  w /= other.w;
+  return *this;
 }
 
 //-----------------------------------------------------------------------------
@@ -123,27 +123,27 @@ Vector4D& Vector4D::operator/=(const Vector4D &other) {
 //-----------------------------------------------------------------------------
 
 Vector4D Vector4D::operator+(const Vector4D &other) {
-    return Vector4D(x + other.x, y + other.y, z + other.z, w + other.w);
+  return Vector4D(x + other.x, y + other.y, z + other.z, w + other.w);
 }
 
 Vector4D Vector4D::operator-(const Vector4D &other) {
-    return Vector4D(x - other.x, y - other.y, z - other.z, w - other.w);
+  return Vector4D(x - other.x, y - other.y, z - other.z, w - other.w);
 }
 
 Vector4D Vector4D::operator*(vec_t val) {
-    return Vector4D(x * val, y * val, z * val, w * val);
+  return Vector4D(x * val, y * val, z * val, w * val);
 }
 
 Vector4D Vector4D::operator*(const Vector4D &other) {
-    return Vector4D(x * other.x, y * other.y, z * other.z, w * other.w);
+  return Vector4D(x * other.x, y * other.y, z * other.z, w * other.w);
 }
 
 Vector4D Vector4D::operator/(vec_t val) {
-    //@NOTE: We shall do some checking for 0 here!
-    vec_t div = 1.0f / val;
-    return Vector4D(x * div, y * div, z * div, w * div);
+  //@NOTE: We shall do some checking for 0 here!
+  vec_t div = 1.0f / val;
+  return Vector4D(x * div, y * div, z * div, w * div);
 }
 
 Vector4D Vector4D::operator/(const Vector4D &other) {
-    return Vector4D(x / other.x, y / other.y, z / other.z, w / other.w);
+  return Vector4D(x / other.x, y / other.y, z / other.z, w / other.w);
 }

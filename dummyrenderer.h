@@ -5,9 +5,9 @@
 
 class DummyRenderer : public Renderer {
 public:
-    DummyRenderer();
+  DummyRenderer();
 
-    void render(Particle *p);
+  void render(Particle *p);
 };
 
 #endif // DUMMYRENDERER_H

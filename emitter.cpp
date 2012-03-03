@@ -6,92 +6,92 @@
 #include "renderer.h"
 
 Emitter::Emitter(const Vector4D &pos, const Vector4D &vel, int itv, int dur, int max) :
-    _position(pos),
-    _velocity(vel),
-    _interval(itv),
-    _duration(dur),
-    _maxParticles(max),
-    _renderer(NULL),
-    _particles(NULL),
-    _elapsed(itv) {
-    _particles = new Particle*[_maxParticles];
-    for(int i = 0; i < _maxParticles; i++) {
-        _particles[i] = NULL;
-    }
+  _position(pos),
+  _velocity(vel),
+  _interval(itv),
+  _duration(dur),
+  _maxParticles(max),
+  _renderer(NULL),
+  _particles(NULL),
+  _elapsed(itv) {
+  _particles = new Particle*[_maxParticles];
+  for(int i = 0; i < _maxParticles; i++) {
+    _particles[i] = NULL;
+  }
 }
 
 Emitter::~Emitter() {
-    for(int i = 0; i < _maxParticles; i++) {
-        if(_particles[i]) {
-            delete _particles[i];
-            _particles[i] = NULL;
-        }
+  for(int i = 0; i < _maxParticles; i++) {
+    if(_particles[i]) {
+      delete _particles[i];
+      _particles[i] = NULL;
     }
-    delete[] _particles;
+  }
+  delete[] _particles;
 }
 
 void Emitter::update(int elapsed) {
-    float elapsedf = (float)elapsed/1000;
-    for(int i = 0; i < _maxParticles; i++) {
-        if(_particles[i]) {
-            Particle* p = _particles[i];
+  float elapsedf = (float)elapsed/1000;
+  for(int i = 0; i < _maxParticles; i++) {
+    if(_particles[i]) {
+      Particle* p = _particles[i];
 
-            // Update particle state (do it with operators?)
-            p->position += p->velocity * elapsedf;
-            p->lifetime -= elapsed;
+      // Update particle state (do it with operators?)
+      p->position += p->velocity * elapsedf;
+      p->lifetime -= elapsed;
 
-            //@TODO: Apply operators on p
+      //@TODO: Apply operators on p
 
-            if(p->dead) {
-                removeParticle(i);
-            }
-        }
+      if(p->dead) {
+        removeParticle(i);
+      }
     }
+  }
 
-    _elapsed += elapsed;
-    while(_elapsed > _interval) {
-        createParticle();
-        _elapsed -= _interval;
-    }
+  _elapsed += elapsed;
+  while(_elapsed > _interval) {
+    createParticle();
+    _elapsed -= _interval;
+  }
 }
 
 void Emitter::draw() {
-    if(_renderer) {
-        for(int i = 0; i < _maxParticles; i++) {
-            if(_particles[i]) {
-                _renderer->render(_particles[i]);
-            }
-        }
+  if(_renderer) {
+    for(int i = 0; i < _maxParticles; i++) {
+      if(_particles[i]) {
+        _renderer->render(_particles[i]);
+      }
     }
+  }
 }
 
 void Emitter::renderer(Renderer *rend) {
-    if(_renderer) {
-        delete[] _renderer;
-    }
+  if(_renderer) {
+    delete[] _renderer;
+  }
 
-    _renderer = rend;
+  _renderer = rend;
 }
 
 bool Emitter::createParticle() {
-    int index;
-    for(index = 0; index < _maxParticles; index++) {
-        if(!_particles[index]) break;
-    }
+  int index;
+  for(index = 0; index < _maxParticles; index++) {
+    if(!_particles[index]) break;
+  }
 
-    if(index >= _maxParticles) return false;
+  if(index >= _maxParticles) return false;
 
-    Particle* particle = new Particle(_position, _velocity);
-    //@TODO: Apply Initializers here
+  Particle* particle = new Particle(_position, _velocity);
+  //@TODO: Apply Initializers here
 
-    _particles[index] = particle;
+  _particles[index] = particle;
 
-    return true;
+  return true;
 }
 
 void Emitter::removeParticle(int index) {
-    delete _particles[index];
-    _particles[index] = NULL;
+  delete _particles[index];
+  _particles[index] = NULL;
 
-    //@TODO: Keep track of free indexes (?)
+  //@TODO: Keep track of free indexes (?)
 }

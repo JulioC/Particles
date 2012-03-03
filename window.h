@@ -8,14 +8,14 @@
 class GLWidget;
 
 class Window : public QWidget {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    Window();
+  Window();
 
 private:
-    GLWidget *glWidget;
-    
+  GLWidget *glWidget;
+
 };
 
 #endif // WINDOW_H

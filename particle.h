@@ -3,24 +3,23 @@
 
 #include "vector4d.h"
 
-class Particle
-{
+class Particle {
 public:
-    // Exposed properties for ease of access
-    Vector4D position;
-    Vector4D velocity;
+  // Exposed properties for ease of access
+  Vector4D position;
+  Vector4D velocity;
 
-    int lifetime;
-    //@TODO: Add color
+  int lifetime;
+  //@TODO: Add color
 
-    bool dead;
+  bool dead;
 
-    Particle(const Vector4D &p, const Vector4D &v);
+  Particle(const Vector4D &p, const Vector4D &v);
 
 private:
-    // Do not copy me!
-    Particle(const Particle &);
-    Particle& operator=(const Particle &);
+  // Do not copy me!
+  Particle(const Particle &);
+  Particle& operator=(const Particle &);
 };
 
 #endif // PARTICLE_H

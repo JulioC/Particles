@@ -4,33 +4,37 @@
 // Constructor
 //-----------------------------------------------------------------------------
 
-Vector4D::Vector4D(void) {
+Vector4D::Vector4D(void) :
+    x(0),
+    y(0),
+    z(0),
+    w(0) {
     x = y = z = w = .0;
 }
 
-Vector4D::Vector4D(vec_t X, vec_t Y, vec_t Z, vec_t W) {
-    x = X;
-    y = Y;
-    z = Z;
-    w = W;
+Vector4D::Vector4D(vec_t X, vec_t Y, vec_t Z, vec_t W) :
+    x(X),
+    y(Y),
+    z(Z),
+    w(W) {
 }
 
-Vector4D::Vector4D(const vec_t *array) {
-    x = array[0];
-    y = array[1];
-    z = array[2];
-    w = array[3];
+Vector4D::Vector4D(const vec_t *array) :
+    x(array[0]),
+    y(array[1]),
+    z(array[2]),
+    w(array[3]) {
 }
 
 //-----------------------------------------------------------------------------
 // Copy
 //-----------------------------------------------------------------------------
 
-Vector4D::Vector4D(const Vector4D &other) {
-    x = other.x;
-    y = other.y;
-    z = other.z;
-    w = other.w;
+Vector4D::Vector4D(const Vector4D &other) :
+    x(other.x),
+    y(other.y),
+    z(other.z),
+    w(other.w) {
 }
 
 Vector4D& Vector4D::operator=(const Vector4D &other) {

@@ -31,23 +31,24 @@ Emitter::~Emitter() {
 }
 
 void Emitter::update(int elapsed) {
+    float elapsedf = (float)elapsed/1000;
     for(int i = 0; i < _maxParticles; i++) {
         if(_particles[i]) {
             Particle* p = _particles[i];
 
             // This should be done with an operator (?)
-            p->position += p->velocity * _elapsed;
+            p->position += p->velocity * elapsedf;
 
             // This should be done with an operator
             p->lifetime -= elapsed;
 
             //@TODO: Apply operators on p
 
-            if(p->lifetime < 0) {
+            /*if(p->lifetime < 0) {
                 delete p;
                 _particles[i] = NULL;
 
-            }
+            }*/
         }
     }
 
@@ -78,7 +79,7 @@ void Emitter::renderer(Renderer *rend) {
 
 bool Emitter::createParticle() {
     int index;
-    for(int index = 0; index < _maxParticles; index++) {
+    for(index = 0; index < _maxParticles; index++) {
         if(!_particles[index]) break;
     }
 

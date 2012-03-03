@@ -38,7 +38,7 @@ protected:
   void removeParticle(int index);
 
   void applyInitializers(Particle *p);
-  void applyOperators(Particle *p);
+  void applyOperators(Particle *p, int elapsed);
 
 private:
   // Do not copy me!

@@ -69,7 +69,7 @@ void Emitter::update(int elapsed) {
       p->position += p->velocity * elapsedf;
       p->lifetime -= elapsed;
 
-      applyOperators(p);
+      applyOperators(p, elapsed);
 
       if(p->dead) {
         removeParticle(i);
@@ -164,11 +164,11 @@ void Emitter::applyInitializers(Particle *p) {
   }
 }
 
-void Emitter::applyOperators(Particle *p) {
+void Emitter::applyOperators(Particle *p, int elapsed) {
   int index;
   for(index = 0; index < MAX_OPERATORS; index++) {
     if(_operators[index]) {
-      _operators[index]->apply(p, this);
+      _operators[index]->apply(p, elapsed);
     }
   }
 }

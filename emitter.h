@@ -3,7 +3,7 @@
 
 #include "vector4d.h"
 
-#define MAX_PARTICLES 8 //@TODO: increase value for release
+#define MAX_PARTICLES 1024 //@TODO: increase value for release
 #define MAX_INITIALIZERS 32
 #define MAX_OPERATORS 32
 

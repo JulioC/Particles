@@ -36,7 +36,7 @@ public:
     Vector4D& operator/=(const Vector4D &v);
     Vector4D& operator/=(vec_t val);
 
-private:
+    //@TODO: Implement other Vector methods (length, normalize, etc)
 };
 
 #endif // VECTOR4D_H

@@ -99,6 +99,7 @@ Vector4D& Vector4D::operator*=(const Vector4D &other)
 
 Vector4D& Vector4D::operator/=(vec_t val)
 {
+    //@NOTE: We shall do some checking for 0 here!
     vec_t div = 1.0f / val;
     x *= div;
     y *= div;

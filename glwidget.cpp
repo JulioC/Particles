@@ -3,7 +3,9 @@
 #include <QTimer>
 
 #include "emitter.h"
+
 #include "renderers/dummyrenderer.h"
+#include "initializers/randomlifetime.h"
 #include "operators/decay.h"
 
 GLWidget::GLWidget(QWidget *parent) :
@@ -58,6 +60,7 @@ void GLWidget::initializeGL() {
 
   _emitter = new Emitter(Vector4D(), Vector4D(1, 1, 1, 1), 0.1);
   _emitter->renderer(new DummyRenderer());
+  _emitter->addInitializer(new RandomLifetime(0.8));
   _emitter->addOperator(new Decay());
 }
 

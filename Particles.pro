@@ -1,7 +1,7 @@
 QT += core gui opengl
 
 RENDERERS = dummyrenderer
-INITIALIZERS =
+INITIALIZERS = randomlifetime
 OPERATORS = decay
 
 HEADERS += \
@@ -31,7 +31,7 @@ for(name, RENDERERS) {
   HEADERS += renderers/$${name}.h
   SOURCES += renderers/$${name}.cpp
 }
-for(name, INITIALIZER) {
+for(name, INITIALIZERS) {
   HEADERS += initializers/$${name}.h
   SOURCES += initializers/$${name}.cpp
 }

@@ -1,6 +1,7 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
 
+#include "color.h"
 #include "vector4d.h"
 
 class Particle {
@@ -9,7 +10,7 @@ public:
   Vector4D position;
   Vector4D velocity;
 
-  Vector4D color;
+  Color color;
 
   float radius;
 

@@ -8,6 +8,7 @@
 #include <QGLShader>
 #include <QGLShaderProgram>
 
+#include "color.h"
 #include "emitter.h"
 
 #include "renderers/rend_point.h"
@@ -86,7 +87,7 @@ void GLWidget::initializeGL() {
   _emitter->renderer(new Rend_Point());
 
   _emitter->addInitializer(new Init_Lifetime(4, 2));
-  _emitter->addInitializer(new Init_Color(Vector4D(200, 30, 0, 255), Vector4D(220, 60, 0 , 255)));
+  _emitter->addInitializer(new Init_Color(Color(200, 30, 0), Color(220, 60, 0)));
   _emitter->addInitializer(new Init_Speed(0.8, 0.8));
   _emitter->addInitializer(new Init_Radius(1.0, 10.0));
   //_emitter->addInitializer(new Init_PositionOffset(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));

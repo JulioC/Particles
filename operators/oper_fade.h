@@ -1,7 +1,6 @@
 #ifndef OPER_FADE_H
 #define OPER_FADE_H
 
-#include "vector4d.h"
 #include "operator.h"
 
 class Oper_Fade : public Operator {

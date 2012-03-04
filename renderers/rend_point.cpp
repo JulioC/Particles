@@ -13,7 +13,7 @@ Rend_Point::~Rend_Point() {
 
 void Rend_Point::render(Particle *p) {
   glPointSize(p->radius);
-  glColor4ub(p->color[0], p->color[1], p->color[2], p->color[3]);
+  glColor4f(p->color.r, p->color.g, p->color.b, p->color.a);
   glPushMatrix();
   glTranslatef(p->position.x, p->position.y, p->position.z);
   glBegin(GL_POINTS);

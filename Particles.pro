@@ -28,7 +28,8 @@ HEADERS += \
   renderer.h \
   operator.h \
   initializer.h \
-  timer.h
+  timer.h \
+  color.h
 
 SOURCES += \
   particle.cpp \
@@ -37,7 +38,8 @@ SOURCES += \
   window.cpp \
   glwidget.cpp \
   emitter.cpp \
-  timer.cpp
+  timer.cpp \
+  color.cpp
 
 RESOURCES += \
   resources.qrc

@@ -2,9 +2,9 @@
 
 #include <float.h>
 
-Particle::Particle(const Vector4D &p, const Vector4D &v) :
+Particle::Particle(const Vector4D &p) :
   position(p),
-  velocity(v),
+  velocity(1, 1, 1),
   color(255, 255, 255, 255),
   radius(5.0),
   lifetime(FLT_MAX),

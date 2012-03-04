@@ -17,7 +17,7 @@ public:
 
   bool dead;
 
-  Particle(const Vector4D &p, const Vector4D &v);
+  Particle(const Vector4D &p);
 
   void update(float elapsed);
 

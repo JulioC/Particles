@@ -81,7 +81,7 @@ void GLWidget::initializeGL() {
 
   initShaders();
 
-  _emitter = new Emitter(Vector4D(0, 0, 0), Vector4D(0, 1, 0), 0.001, 1024*100 );
+  _emitter = new Emitter(Vector4D(0, 0, 0), 0.001, 1024*100 );
 
   _emitter->renderer(new Rend_Point());
 

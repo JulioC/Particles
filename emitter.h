@@ -14,7 +14,7 @@ class Initializer;
 
 class Emitter {
 public:
-  Emitter(const Vector4D &pos, const Vector4D &vel, float itv = 1., int max = MAX_PARTICLES);
+  Emitter(const Vector4D &pos, float itv = 1., int max = MAX_PARTICLES);
   virtual ~Emitter();
 
   // These should be called on every animation frame
@@ -29,7 +29,6 @@ public:
 
 protected:
   Vector4D _position;
-  Vector4D _velocity; //@NOTE: We shouldn't call this velocity
 
   float _interval;
 

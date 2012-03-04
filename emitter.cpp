@@ -7,9 +7,8 @@
 #include "operator.h"
 #include "initializer.h"
 
-Emitter::Emitter(const Vector4D &pos, const Vector4D &vel, float itv, int max) :
+Emitter::Emitter(const Vector4D &pos, float itv, int max) :
   _position(pos),
-  _velocity(vel),
   _interval(itv),
   _maxParticles(max),
   _renderer(NULL),
@@ -136,7 +135,7 @@ bool Emitter::createParticle() {
 
   if(index >= _maxParticles) return false;
 
-  Particle* particle = new Particle(_position, _velocity);
+  Particle* particle = new Particle(_position);
   applyInitializers(particle);
 
   _particles[index] = particle;

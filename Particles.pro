@@ -2,7 +2,7 @@ QT += core gui opengl
 
 RENDERERS = dummyrenderer
 INITIALIZERS = lifetimerandom positionoffsetrandom
-OPERATORS = decay
+OPERATORS = decay basicphysics
 
 HEADERS += \
   particle.h \

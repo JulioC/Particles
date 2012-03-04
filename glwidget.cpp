@@ -7,7 +7,11 @@
 #include "emitter.h"
 
 #include "renderers/dummyrenderer.h"
-#include "initializers/randomlifetime.h"
+
+#include "initializers/lifetimerandom.h"
+#include "initializers/positionoffsetrandom.h"
+
+#include "operators/basicphysics.h"
 #include "operators/decay.h"
 
 GLWidget::GLWidget(QWidget *parent) :
@@ -62,10 +66,17 @@ void GLWidget::initializeGL() {
 
   //@TODO: do time management in a better way
 
-  _emitter = new Emitter(Vector4D(), Vector4D(1, 1, 1, 1), 0.1);
+  //@TODO: there is a bug somewhere, the first particle behaves
+
+  _emitter = new Emitter(Vector4D(), Vector4D(0.2, 1, 0, 1), 0.1);
+
   _emitter->renderer(new DummyRenderer());
-  _emitter->addInitializer(new RandomLifetime(0.8));
+
+  _emitter->addInitializer(new LifetimeRandom(3, 1.5));
+  _emitter->addInitializer(new PositionOffsetRandom(Vector4D(-.1, 0, -.1, 1), Vector4D(.1, 0, .1, 1)));
+
   _emitter->addOperator(new Decay());
+  _emitter->addOperator(new BasicPhysics(Vector4D(0, -1., 0, 1), 0.1));
 }
 
 void GLWidget::paintGL() {

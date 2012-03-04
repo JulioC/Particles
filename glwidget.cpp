@@ -17,6 +17,7 @@
 #include "initializers/init_speed.h"
 #include "initializers/init_speedoffset.h"
 #include "initializers/init_positionoffset.h"
+#include "initializers/init_positionring.h"
 
 #include "operators/oper_acceleration.h"
 #include "operators/oper_decay.h"
@@ -78,14 +79,15 @@ void GLWidget::initializeGL() {
 
   initShaders();
 
-  _emitter = new Emitter(Vector4D(0, 0, 0), Vector4D(.2, 1, 0), 0.002);
+  _emitter = new Emitter(Vector4D(0, 0, 0), Vector4D(0, 1, 0), 0.002);
 
   _emitter->renderer(new Rend_Point());
 
   _emitter->addInitializer(new Init_Lifetime(3, 1.5));
   _emitter->addInitializer(new Init_Color(Vector4D(140, 150, 200, 255), Vector4D(160, 200, 255, 255)));
   _emitter->addInitializer(new Init_Speed(0.8, 1.4));
-  _emitter->addInitializer(new Init_PositionOffset(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));
+  //_emitter->addInitializer(new Init_PositionOffset(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));
+  _emitter->addInitializer(new Init_PositionRing(Vector4D(0, 0, 0), 0.2, 0.1));
 
   _emitter->addOperator(new Oper_Decay());
   _emitter->addOperator(new Oper_Acceleration(Vector4D(0, -1., 0)));

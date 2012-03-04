@@ -8,7 +8,8 @@ INITIALIZERS = \
   positionoffset \
   speedoffset \
   color \
-  speed
+  speed \
+  positionring
 
 OPERATORS = \
   decay \

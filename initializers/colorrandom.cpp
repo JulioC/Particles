@@ -18,5 +18,6 @@ void ColorRandom::apply(Particle *p, Emitter *e) {
   for(int i = 0; i < 4; i++) {
     res[i] = _min[i] + _range[i] * (float)rand()/(float)RAND_MAX;
   }
+
   p->color = res;
 }

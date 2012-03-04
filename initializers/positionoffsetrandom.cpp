@@ -14,11 +14,10 @@ PositionOffsetRandom::~PositionOffsetRandom() {
 }
 
 void PositionOffsetRandom::apply(Particle *p, Emitter *e) {
-  Vector4D pos = Vector4D(0, 0, 0, 1);
-  pos.x = _min.x + _range.x * (float)rand()/(float)RAND_MAX;
-  pos.y = _min.y + _range.y * (float)rand()/(float)RAND_MAX;
-  pos.z = _min.z + _range.z * (float)rand()/(float)RAND_MAX;
-  pos.w = _min.w + _range.w * (float)rand()/(float)RAND_MAX;
+  Vector4D res;
+  for(int i = 0; i < 4; i++) {
+    res[i] = _min[i] + _range[i] * (float)rand()/(float)RAND_MAX;
+  }
 
-  p->position += pos;
+  p->position += res;
 }

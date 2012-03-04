@@ -4,10 +4,10 @@ RENDERERS = \
   point
 
 INITIALIZERS = \
-  lifetimerandom \
-  positionoffsetrandom \
-  speedoffsetrandom \
-  colorrandom
+  lifetime \
+  positionoffset \
+  speedoffset \
+  color
 
 OPERATORS = \
   decay \

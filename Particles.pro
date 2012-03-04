@@ -10,7 +10,8 @@ INITIALIZERS = \
   color \
   speed \
   positionring \
-  radius
+  radius \
+  directioncone
 
 OPERATORS = \
   decay \

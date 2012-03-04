@@ -13,6 +13,7 @@
 #include "renderers/rend_point.h"
 
 #include "initializers/init_color.h"
+#include "initializers/init_directioncone.h"
 #include "initializers/init_lifetime.h"
 #include "initializers/init_radius.h"
 #include "initializers/init_speed.h"
@@ -84,16 +85,17 @@ void GLWidget::initializeGL() {
 
   _emitter->renderer(new Rend_Point());
 
-  _emitter->addInitializer(new Init_Lifetime(2, 1.5));
+  _emitter->addInitializer(new Init_Lifetime(4, 2));
   _emitter->addInitializer(new Init_Color(Vector4D(200, 30, 0, 255), Vector4D(220, 60, 0 , 255)));
-  _emitter->addInitializer(new Init_Speed(0.0, 0.6));
+  _emitter->addInitializer(new Init_Speed(0.8, 0.8));
   _emitter->addInitializer(new Init_Radius(1.0, 10.0));
   //_emitter->addInitializer(new Init_PositionOffset(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));
-  _emitter->addInitializer(new Init_PositionRing(Vector4D(0, 0, 0), Vector4D(0, 0, 1), 0.1, 0));
+  //_emitter->addInitializer(new Init_PositionRing(Vector4D(0, 0, 0), Vector4D(0, 0, 1), 0.1, 0));
+  _emitter->addInitializer(new Init_DirectionCone(Vector4D(0, 0.8, 0), 0.4, 0.2));
 
   _emitter->addOperator(new Oper_Decay());
-  //_emitter->addOperator(new Oper_Acceleration(Vector4D(0, 0.1, 0)));
-  //_emitter->addOperator(new Oper_Drag(0.1));
+  _emitter->addOperator(new Oper_Acceleration(Vector4D(0, -0.4, 0)));
+  _emitter->addOperator(new Oper_Drag(0.1));
   _emitter->addOperator(new Oper_Fade(0.5));
 }
 
@@ -111,11 +113,11 @@ void GLWidget::paintGL() {
 void GLWidget::resizeGL(int w, int h) {
   glViewport(0, 0, w, h);
 
-  /*glPushMatrix();
+  glPushMatrix();
   glMatrixMode(GL_PROJECTION); //set the matrix to projection
   glLoadIdentity();
   perspective(75.0, (GLfloat)w / (GLfloat)h, 0.0, 100.0);
-  glPopMatrix();*/
+  glPopMatrix();
 }
 
 void GLWidget::initShaders() {

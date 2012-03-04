@@ -1,6 +1,8 @@
 #ifndef VECTOR4D_H
 #define VECTOR4D_H
 
+//@TODO: change Vector4D for Vector3D
+
 // We don't need more precision than float
 typedef float vec_t;
 

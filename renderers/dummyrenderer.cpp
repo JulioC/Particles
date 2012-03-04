@@ -12,7 +12,7 @@ DummyRenderer::~DummyRenderer() {
 }
 
 void DummyRenderer::render(Particle *p) {
-  glColor4f(1.0, 1.0, 1.0, 1.0);
+  glColor4ub(p->color[0], p->color[1], p->color[2], p->color[3]);
   glPushMatrix();
   glLoadIdentity();
   glTranslatef(p->position.x, p->position.y, p->position.z);

@@ -9,8 +9,9 @@ public:
   Vector4D position;
   Vector4D velocity;
 
+  Vector4D color;
+
   float lifetime;
-  //@TODO: Add color
 
   bool dead;
 

@@ -8,6 +8,7 @@
 
 #include "renderers/dummyrenderer.h"
 
+#include "initializers/colorrandom.h"
 #include "initializers/lifetimerandom.h"
 #include "initializers/speedoffsetrandom.h"
 #include "initializers/positionoffsetrandom.h"
@@ -58,11 +59,19 @@ void GLWidget::initializeGL() {
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_CULL_FACE);
 
+  glEnable( GL_BLEND );
+  glBlendFunc( GL_SRC_ALPHA, GL_ONE );
+
+  // Eye candy? :3
+  //glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST );
+  //glHint( GL_POINT_SMOOTH_HINT, GL_NICEST );
+
   _emitter = new Emitter(Vector4D(0, 0, 0), Vector4D(.2, 1, 0), 0.002);
 
   _emitter->renderer(new DummyRenderer());
 
   _emitter->addInitializer(new LifetimeRandom(3, 1.5));
+  _emitter->addInitializer(new ColorRandom(Vector4D(0, 0, 0, 255), Vector4D(255, 255, 255, 255)));
   _emitter->addInitializer(new SpeedOffsetRandom(Vector4D(-.1, -.5, 0), Vector4D(.1, 0, .1)));
   _emitter->addInitializer(new PositionOffsetRandom(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));
 

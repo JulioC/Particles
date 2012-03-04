@@ -5,6 +5,7 @@
 Particle::Particle(const Vector4D &p, const Vector4D &v) :
   position(p),
   velocity(v),
+  color(255, 255, 255, 255),
   lifetime(FLT_MAX),
   dead(false) {
 }

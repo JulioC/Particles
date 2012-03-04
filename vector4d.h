@@ -23,6 +23,9 @@ public:
   Vector4D& operator=(const Vector4D &other);
   void toArray(vec_t *dst);
 
+  // Access
+  vec_t& operator[](int index);
+
   // Comparassion
   bool operator==(const Vector4D &other) const;
   bool operator!=(const Vector4D &other) const;

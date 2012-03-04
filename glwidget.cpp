@@ -9,6 +9,7 @@
 #include "renderers/dummyrenderer.h"
 
 #include "initializers/lifetimerandom.h"
+#include "initializers/speedoffsetrandom.h"
 #include "initializers/positionoffsetrandom.h"
 
 #include "operators/basicphysics.h"
@@ -68,15 +69,16 @@ void GLWidget::initializeGL() {
 
   //@TODO: there is a bug somewhere, the first particle behaves
 
-  _emitter = new Emitter(Vector4D(), Vector4D(0.2, 1, 0, 1), 0.1);
+  _emitter = new Emitter(Vector4D(0, 0, 0), Vector4D(.2, 1, 0), 0.002);
 
   _emitter->renderer(new DummyRenderer());
 
   _emitter->addInitializer(new LifetimeRandom(3, 1.5));
-  _emitter->addInitializer(new PositionOffsetRandom(Vector4D(-.1, 0, -.1, 1), Vector4D(.1, 0, .1, 1)));
+  _emitter->addInitializer(new SpeedOffsetRandom(Vector4D(-.1, -.5, 0), Vector4D(.1, 0, .1)));
+  _emitter->addInitializer(new PositionOffsetRandom(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));
 
   _emitter->addOperator(new Decay());
-  _emitter->addOperator(new BasicPhysics(Vector4D(0, -1., 0, 1), 0.1));
+  _emitter->addOperator(new BasicPhysics(Vector4D(0, -1., 0), 0.1));
 }
 
 void GLWidget::paintGL() {

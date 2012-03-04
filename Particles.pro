@@ -1,7 +1,7 @@
 QT += core gui opengl
 
 RENDERERS = dummyrenderer
-INITIALIZERS = lifetimerandom positionoffsetrandom
+INITIALIZERS = lifetimerandom positionoffsetrandom speedoffsetrandom
 OPERATORS = decay basicphysics
 
 HEADERS += \

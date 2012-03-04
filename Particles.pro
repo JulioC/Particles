@@ -12,7 +12,8 @@ INITIALIZERS = \
 
 OPERATORS = \
   decay \
-  basicphysics
+  acceleration \
+  drag
 
 HEADERS += \
   particle.h \

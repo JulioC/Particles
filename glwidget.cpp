@@ -18,8 +18,9 @@
 #include "initializers/init_speedoffset.h"
 #include "initializers/init_positionoffset.h"
 
-#include "operators/oper_basicphysics.h"
+#include "operators/oper_acceleration.h"
 #include "operators/oper_decay.h"
+#include "operators/oper_drag.h"
 
 GLWidget::GLWidget(QWidget *parent) :
   QGLWidget(parent),
@@ -86,7 +87,8 @@ void GLWidget::initializeGL() {
   _emitter->addInitializer(new Init_PositionOffset(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));
 
   _emitter->addOperator(new Oper_Decay());
-  _emitter->addOperator(new Oper_BasicPhysics(Vector4D(0, -1., 0), 0.1));
+  _emitter->addOperator(new Oper_Acceleration(Vector4D(0, -1., 0)));
+  _emitter->addOperator(new Oper_Drag(0.1));
 }
 
 void GLWidget::paintGL() {

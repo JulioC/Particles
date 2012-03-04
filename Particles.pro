@@ -13,7 +13,8 @@ INITIALIZERS = \
 OPERATORS = \
   decay \
   acceleration \
-  drag
+  drag \
+  fade
 
 HEADERS += \
   particle.h \

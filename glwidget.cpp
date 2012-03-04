@@ -21,6 +21,7 @@
 #include "operators/oper_acceleration.h"
 #include "operators/oper_decay.h"
 #include "operators/oper_drag.h"
+#include "operators/oper_fade.h"
 
 GLWidget::GLWidget(QWidget *parent) :
   QGLWidget(parent),
@@ -89,6 +90,7 @@ void GLWidget::initializeGL() {
   _emitter->addOperator(new Oper_Decay());
   _emitter->addOperator(new Oper_Acceleration(Vector4D(0, -1., 0)));
   _emitter->addOperator(new Oper_Drag(0.1));
+  _emitter->addOperator(new Oper_Fade(0.5));
 }
 
 void GLWidget::paintGL() {

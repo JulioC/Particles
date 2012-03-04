@@ -14,6 +14,7 @@
 
 #include "initializers/init_color.h"
 #include "initializers/init_lifetime.h"
+#include "initializers/init_radius.h"
 #include "initializers/init_speed.h"
 #include "initializers/init_speedoffset.h"
 #include "initializers/init_positionoffset.h"
@@ -86,6 +87,7 @@ void GLWidget::initializeGL() {
   _emitter->addInitializer(new Init_Lifetime(2, 1.5));
   _emitter->addInitializer(new Init_Color(Vector4D(200, 30, 0, 255), Vector4D(220, 60, 0 , 255)));
   _emitter->addInitializer(new Init_Speed(0.0, 0.6));
+  _emitter->addInitializer(new Init_Radius(1.0, 10.0));
   //_emitter->addInitializer(new Init_PositionOffset(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));
   _emitter->addInitializer(new Init_PositionRing(Vector4D(0, 0, 0), Vector4D(0, 0, 1), 0.1, 0));
 

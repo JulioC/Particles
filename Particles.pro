@@ -9,7 +9,8 @@ INITIALIZERS = \
   speedoffset \
   color \
   speed \
-  positionring
+  positionring \
+  radius
 
 OPERATORS = \
   decay \

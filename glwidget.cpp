@@ -17,15 +17,20 @@
 
 GLWidget::GLWidget(QWidget *parent) :
   QGLWidget(parent),
-  _timer(NULL),
-  _elapsedTimer(NULL),
-  _lastFrameTime(0),
+  _timer(),
+  _qtimer(NULL),
   _emitter(NULL) {
+  // Set the animation timer
+  _qtimer = new QTimer(this);
+  connect(_qtimer, SIGNAL(timeout()), this, SLOT(animate()));
+  _qtimer->start(10);
+
+  // Fire the internal timer
+  _timer.start();
 }
 
 GLWidget::~GLWidget() {
-  if(_timer) delete _timer;
-  if(_elapsedTimer) delete _elapsedTimer;
+  if(_qtimer) delete _qtimer;
   if(_emitter) delete _emitter;
 }
 
@@ -38,11 +43,9 @@ QSize GLWidget::sizeHint() const {
 }
 
 void GLWidget::animate() {
-  int current = _elapsedTimer->elapsed();
-  float elapsed = (float)(current - _lastFrameTime)/1000.0;
-  _lastFrameTime = current;
+  _timer.update();
 
-  _emitter->update(elapsed);
+  _emitter->update(_timer.elapsed());
 
   updateGL();
 }
@@ -54,20 +57,6 @@ void GLWidget::initializeGL() {
   glShadeModel(GL_FLAT);
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_CULL_FACE);
-
-  // Create the elapsed timer
-  _elapsedTimer = new QElapsedTimer();
-  _elapsedTimer->start();
-
-  // Fire the animation timer
-  if(_timer != NULL) delete _timer;
-  _timer = new QTimer(this);
-  connect(_timer, SIGNAL(timeout()), this, SLOT(animate()));
-  _timer->start(0);
-
-  //@TODO: do time management in a better way
-
-  //@TODO: there is a bug somewhere, the first particle behaves
 
   _emitter = new Emitter(Vector4D(0, 0, 0), Vector4D(.2, 1, 0), 0.002);
 
@@ -85,8 +74,15 @@ void GLWidget::paintGL() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   _emitter->draw();
+
+  showFPS();
 }
 
 void GLWidget::resizeGL(int w, int h) {
   glViewport(0, 0, (GLuint) w, (GLuint) h);
+}
+
+void GLWidget::showFPS() {
+  glColor3ub(222, 160, 0);
+  renderText(-.9, .9, .0, QString("FPS: %1").arg(_timer.fps(), 1));
 }

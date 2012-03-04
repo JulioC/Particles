@@ -2,9 +2,11 @@
 #define GLWIDGET_H
 
 #include <QGLWidget>
-#include <QElapsedTimer>
+
+#include "timer.h"
 
 class Emitter;
+class QTimer;
 
 class GLWidget : public QGLWidget {
   Q_OBJECT
@@ -25,12 +27,13 @@ protected:
   void resizeGL(int width, int height);
 
 private:
-  QTimer* _timer;
-  QElapsedTimer* _elapsedTimer;
+  Timer _timer;
 
-  int _lastFrameTime;
+  QTimer *_qtimer;
 
   Emitter* _emitter;
+
+  void showFPS();
 };
 
 #endif // GLWIDGET_H

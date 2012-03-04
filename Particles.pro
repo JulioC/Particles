@@ -12,7 +12,8 @@ HEADERS += \
   emitter.h \
   renderer.h \
   operator.h \
-  initializer.h
+  initializer.h \
+  timer.h
 
 SOURCES += \
   particle.cpp \
@@ -20,7 +21,8 @@ SOURCES += \
   main.cpp \
   window.cpp \
   glwidget.cpp \
-  emitter.cpp
+  emitter.cpp \
+  timer.cpp
 
 OTHER_FILES += \
   README.md \

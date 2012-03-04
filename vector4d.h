@@ -46,7 +46,11 @@ public:
   Vector4D operator/(const Vector4D &v) const;
   Vector4D operator/(vec_t val) const;
 
-  //@TODO: Implement other Vector methods (length, normalize, etc)
+  // Geometric methods
+  vec_t length() const;
+  void normalize();
+  Vector4D normalized() const;
+
 };
 
 #endif // VECTOR4D_H

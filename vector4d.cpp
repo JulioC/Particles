@@ -1,5 +1,7 @@
 #include "vector4d.h"
 
+#include <math.h>
+
 //-----------------------------------------------------------------------------
 // Constructor
 //-----------------------------------------------------------------------------
@@ -157,10 +159,34 @@ Vector4D Vector4D::operator*(const Vector4D &other) const {
 
 Vector4D Vector4D::operator/(vec_t val) const {
   //@NOTE: We shall do some checking for 0 here!
-  vec_t div = 1.0f / val;
+  vec_t div = 1.0 / val;
   return Vector4D(x * div, y * div, z * div, w * div);
 }
 
 Vector4D Vector4D::operator/(const Vector4D &other) const {
   return Vector4D(x / other.x, y / other.y, z / other.z, w / other.w);
+}
+
+//-----------------------------------------------------------------------------
+// Geometric
+//-----------------------------------------------------------------------------
+
+vec_t Vector4D::length() const {
+  return sqrt(x*x + y*y + z*z + w*w);
+}
+
+void Vector4D::normalize() {
+  vec_t len = length();
+  if(len != 0.0) {
+    x = x / len;
+    y = y / len;
+    z = z / len;
+    w = w / len;
+  }
+}
+
+Vector4D Vector4D::normalized() const {
+  Vector4D copy = *this;
+  copy.normalize();
+  return copy;
 }

@@ -33,7 +33,12 @@ SOURCES += \
   emitter.cpp \
   timer.cpp
 
+RESOURCES += \
+  resources.qrc
+
 OTHER_FILES += \
+  vshader.glsl \
+  fshader.glsl \
   README.md \
   LICENSE
 

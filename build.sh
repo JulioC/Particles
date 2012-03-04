@@ -1,1 +1,1 @@
-cd build && qmake .. && make && ./Particles
+cd build && rm qrc_* || qmake .. && make && ./Particles

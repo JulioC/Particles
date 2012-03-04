@@ -5,8 +5,8 @@
 typedef float vec_t;
 
 /**
- * 4D Vector
- * Implementation based on Valve's
+ * 4D Vector implementation based on Valve's
+ * (I know, don't reinvent the well, we have QVector*D...)
  */
 class Vector4D {
 public:

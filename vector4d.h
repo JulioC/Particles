@@ -15,7 +15,7 @@ public:
 
   // Constructors
   Vector4D(void);
-  Vector4D(vec_t X, vec_t Y, vec_t Z, vec_t W);
+  Vector4D(vec_t X, vec_t Y, vec_t Z, vec_t W = 0);
   Vector4D(const vec_t *array);
 
   // Copy

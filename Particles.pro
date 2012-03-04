@@ -1,6 +1,7 @@
 QT += core gui opengl
 
-RENDERERS = dummyrenderer
+RENDERERS = \
+  pointrenderer
 
 INITIALIZERS = \
   lifetimerandom \

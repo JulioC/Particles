@@ -6,7 +6,7 @@
 
 #include "emitter.h"
 
-#include "renderers/dummyrenderer.h"
+#include "renderers/pointrenderer.h"
 
 #include "initializers/colorrandom.h"
 #include "initializers/lifetimerandom.h"
@@ -68,10 +68,10 @@ void GLWidget::initializeGL() {
 
   _emitter = new Emitter(Vector4D(0, 0, 0), Vector4D(.2, 1, 0), 0.002);
 
-  _emitter->renderer(new DummyRenderer());
+  _emitter->renderer(new PointRenderer());
 
   _emitter->addInitializer(new LifetimeRandom(3, 1.5));
-  _emitter->addInitializer(new ColorRandom(Vector4D(0, 0, 0, 255), Vector4D(255, 255, 255, 255)));
+  _emitter->addInitializer(new ColorRandom(Vector4D(140, 150, 200, 255), Vector4D(160, 200, 255, 255)));
   _emitter->addInitializer(new SpeedOffsetRandom(Vector4D(-.1, -.5, 0), Vector4D(.1, 0, .1)));
   _emitter->addInitializer(new PositionOffsetRandom(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));
 

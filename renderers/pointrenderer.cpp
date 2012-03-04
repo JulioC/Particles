@@ -1,17 +1,17 @@
-#include "dummyrenderer.h"
+#include "pointrenderer.h"
 
 #include <qgl.h>
 
 #include "particle.h"
 
-DummyRenderer::DummyRenderer() :
+PointRenderer::PointRenderer() :
   Renderer() {
 }
 
-DummyRenderer::~DummyRenderer() {
+PointRenderer::~PointRenderer() {
 }
 
-void DummyRenderer::render(Particle *p) {
+void PointRenderer::render(Particle *p) {
   glColor4ub(p->color[0], p->color[1], p->color[2], p->color[3]);
   glPushMatrix();
   glLoadIdentity();

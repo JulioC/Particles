@@ -1,17 +1,18 @@
-#include "pointrenderer.h"
+#include "rend_point.h"
 
 #include <qgl.h>
 
 #include "particle.h"
 
-PointRenderer::PointRenderer() :
+Rend_Point::Rend_Point() :
   Renderer() {
 }
 
-PointRenderer::~PointRenderer() {
+Rend_Point::~Rend_Point() {
 }
 
-void PointRenderer::render(Particle *p) {
+void Rend_Point::render(Particle *p) {
+  glPointSize(p->radius);
   glColor4ub(p->color[0], p->color[1], p->color[2], p->color[3]);
   glPushMatrix();
   glTranslatef(p->position.x, p->position.y, p->position.z);

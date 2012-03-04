@@ -10,15 +10,15 @@
 
 #include "emitter.h"
 
-#include "renderers/pointrenderer.h"
+#include "renderers/rend_point.h"
 
-#include "initializers/colorrandom.h"
-#include "initializers/lifetimerandom.h"
-#include "initializers/speedoffsetrandom.h"
-#include "initializers/positionoffsetrandom.h"
+#include "initializers/init_colorrandom.h"
+#include "initializers/init_lifetimerandom.h"
+#include "initializers/init_speedoffsetrandom.h"
+#include "initializers/init_positionoffsetrandom.h"
 
-#include "operators/basicphysics.h"
-#include "operators/decay.h"
+#include "operators/oper_basicphysics.h"
+#include "operators/oper_decay.h"
 
 GLWidget::GLWidget(QWidget *parent) :
   QGLWidget(parent),
@@ -77,15 +77,15 @@ void GLWidget::initializeGL() {
 
   _emitter = new Emitter(Vector4D(0, 0, 0), Vector4D(.2, 1, 0), 0.002);
 
-  _emitter->renderer(new PointRenderer());
+  _emitter->renderer(new Rend_Point());
 
-  _emitter->addInitializer(new LifetimeRandom(3, 1.5));
-  _emitter->addInitializer(new ColorRandom(Vector4D(140, 150, 200, 255), Vector4D(160, 200, 255, 255)));
-  _emitter->addInitializer(new SpeedOffsetRandom(Vector4D(-.1, -.5, 0), Vector4D(.1, 0, .1)));
-  _emitter->addInitializer(new PositionOffsetRandom(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));
+  _emitter->addInitializer(new Init_LifetimeRandom(3, 1.5));
+  _emitter->addInitializer(new Init_ColorRandom(Vector4D(140, 150, 200, 255), Vector4D(160, 200, 255, 255)));
+  _emitter->addInitializer(new Init_SpeedOffsetRandom(Vector4D(-.1, -.5, 0), Vector4D(.1, 0, .1)));
+  _emitter->addInitializer(new Init_PositionOffsetRandom(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));
 
-  _emitter->addOperator(new Decay());
-  _emitter->addOperator(new BasicPhysics(Vector4D(0, -1., 0), 0.1));
+  _emitter->addOperator(new Oper_Decay());
+  _emitter->addOperator(new Oper_BasicPhysics(Vector4D(0, -1., 0), 0.1));
 }
 
 void GLWidget::paintGL() {

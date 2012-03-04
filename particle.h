@@ -11,6 +11,8 @@ public:
 
   Vector4D color;
 
+  float radius;
+
   float lifetime;
 
   bool dead;

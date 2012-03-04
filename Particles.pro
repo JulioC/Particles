@@ -1,7 +1,7 @@
 QT += core gui opengl
 
 RENDERERS = \
-  pointrenderer
+  point
 
 INITIALIZERS = \
   lifetimerandom \
@@ -44,14 +44,14 @@ OTHER_FILES += \
 
 # Add  Renders, Initializers and Operators
 for(name, RENDERERS) {
-  HEADERS += renderers/$${name}.h
-  SOURCES += renderers/$${name}.cpp
+  HEADERS += renderers/rend_$${name}.h
+  SOURCES += renderers/rend_$${name}.cpp
 }
 for(name, INITIALIZERS) {
-  HEADERS += initializers/$${name}.h
-  SOURCES += initializers/$${name}.cpp
+  HEADERS += initializers/init_$${name}.h
+  SOURCES += initializers/init_$${name}.cpp
 }
 for(name, OPERATORS) {
-  HEADERS += operators/$${name}.h
-  SOURCES += operators/$${name}.cpp
+  HEADERS += operators/oper_$${name}.h
+  SOURCES += operators/oper_$${name}.cpp
 }

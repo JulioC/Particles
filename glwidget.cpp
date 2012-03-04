@@ -81,7 +81,7 @@ void GLWidget::initializeGL() {
 
   _emitter->addInitializer(new Init_Lifetime(3, 1.5));
   _emitter->addInitializer(new Init_Color(Vector4D(140, 150, 200, 255), Vector4D(160, 200, 255, 255)));
-  _emitter->addInitializer(new Init_SpeedOffset(Vector4D(-.1, -.5, 0), Vector4D(.1, 0, .1)));
+  _emitter->addInitializer(new Init_SpeedOffset(-0.2, .4));
   _emitter->addInitializer(new Init_PositionOffset(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));
 
   _emitter->addOperator(new Oper_Decay());

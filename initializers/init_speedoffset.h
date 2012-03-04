@@ -6,14 +6,14 @@
 
 class Init_SpeedOffset : public Initializer {
 public:
-  Init_SpeedOffset(const Vector4D &min, const Vector4D &max);
+  Init_SpeedOffset(float min, float max);
   virtual ~Init_SpeedOffset();
 
   virtual void apply(Particle *p, Emitter *e = 0);
 
 protected:
-  Vector4D _min;
-  Vector4D _range;
+  float _min;
+  float _range;
 };
 
 #endif // INIT_SPEEDOFFSET_H

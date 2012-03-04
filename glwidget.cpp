@@ -14,6 +14,7 @@
 
 #include "initializers/init_color.h"
 #include "initializers/init_lifetime.h"
+#include "initializers/init_speed.h"
 #include "initializers/init_speedoffset.h"
 #include "initializers/init_positionoffset.h"
 
@@ -70,8 +71,8 @@ void GLWidget::initializeGL() {
   glBlendFunc( GL_SRC_ALPHA, GL_ONE );
 
   // Eye candy? :3
-  //glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST );
-  //glHint( GL_POINT_SMOOTH_HINT, GL_NICEST );
+  glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST );
+  glHint( GL_POINT_SMOOTH_HINT, GL_NICEST );
 
   initShaders();
 
@@ -81,7 +82,7 @@ void GLWidget::initializeGL() {
 
   _emitter->addInitializer(new Init_Lifetime(3, 1.5));
   _emitter->addInitializer(new Init_Color(Vector4D(140, 150, 200, 255), Vector4D(160, 200, 255, 255)));
-  _emitter->addInitializer(new Init_SpeedOffset(-0.2, .4));
+  _emitter->addInitializer(new Init_Speed(0.8, 1.4));
   _emitter->addInitializer(new Init_PositionOffset(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));
 
   _emitter->addOperator(new Oper_Decay());

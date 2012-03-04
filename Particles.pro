@@ -7,7 +7,8 @@ INITIALIZERS = \
   lifetime \
   positionoffset \
   speedoffset \
-  color
+  color \
+  speed
 
 OPERATORS = \
   decay \

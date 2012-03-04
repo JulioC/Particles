@@ -87,19 +87,19 @@ bool Vector4D::operator!=(Vector4D const &other) const {
 // Arithmetic assignment
 //-----------------------------------------------------------------------------
 
-Vector4D& Vector4D::operator+=(const Vector4D &other) {
-  x += other.x;
-  y += other.y;
-  z += other.z;
-  w += other.w;
+Vector4D& Vector4D::operator+=(const Vector4D &v) {
+  x += v.x;
+  y += v.y;
+  z += v.z;
+  w += v.w;
   return *this;
 }
 
-Vector4D& Vector4D::operator-=(const Vector4D &other) {
-  x -=other.x;
-  y -=other.y;
-  z -= other.z;
-  w -= other.w;
+Vector4D& Vector4D::operator-=(const Vector4D &v) {
+  x -=v.x;
+  y -=v.y;
+  z -= v.z;
+  w -= v.w;
   return *this;
 }
 
@@ -111,11 +111,11 @@ Vector4D& Vector4D::operator*=(vec_t val) {
   return *this;
 }
 
-Vector4D& Vector4D::operator*=(const Vector4D &other) {
-  x *= other.x;
-  y *= other.y;
-  z *= other.z;
-  w *= other.w;
+Vector4D& Vector4D::operator*=(const Vector4D &v) {
+  x *= v.x;
+  y *= v.y;
+  z *= v.z;
+  w *= v.w;
   return *this;
 }
 
@@ -129,11 +129,11 @@ Vector4D& Vector4D::operator/=(vec_t val) {
   return *this;
 }
 
-Vector4D& Vector4D::operator/=(const Vector4D &other) {
-  x /= other.x;
-  y /= other.y;
-  z /= other.z;
-  w /= other.w;
+Vector4D& Vector4D::operator/=(const Vector4D &v) {
+  x /= v.x;
+  y /= v.y;
+  z /= v.z;
+  w /= v.w;
   return *this;
 }
 
@@ -141,20 +141,20 @@ Vector4D& Vector4D::operator/=(const Vector4D &other) {
 // Arithmetic
 //-----------------------------------------------------------------------------
 
-Vector4D Vector4D::operator+(const Vector4D &other) const {
-  return Vector4D(x + other.x, y + other.y, z + other.z, w + other.w);
+Vector4D Vector4D::operator+(const Vector4D &v) const {
+  return Vector4D(x + v.x, y + v.y, z + v.z, w + v.w);
 }
 
-Vector4D Vector4D::operator-(const Vector4D &other) const {
-  return Vector4D(x - other.x, y - other.y, z - other.z, w - other.w);
+Vector4D Vector4D::operator-(const Vector4D &v) const {
+  return Vector4D(x - v.x, y - v.y, z - v.z, w - v.w);
 }
 
 Vector4D Vector4D::operator*(vec_t val) const {
   return Vector4D(x * val, y * val, z * val, w * val);
 }
 
-Vector4D Vector4D::operator*(const Vector4D &other) const {
-  return Vector4D(x * other.x, y * other.y, z * other.z, w * other.w);
+Vector4D Vector4D::operator*(const Vector4D &v) const {
+  return Vector4D(x * v.x, y * v.y, z * v.z, w * v.w);
 }
 
 Vector4D Vector4D::operator/(vec_t val) const {
@@ -163,8 +163,8 @@ Vector4D Vector4D::operator/(vec_t val) const {
   return Vector4D(x * div, y * div, z * div, w * div);
 }
 
-Vector4D Vector4D::operator/(const Vector4D &other) const {
-  return Vector4D(x / other.x, y / other.y, z / other.z, w / other.w);
+Vector4D Vector4D::operator/(const Vector4D &v) const {
+  return Vector4D(x / v.x, y / v.y, z / v.z, w / v.w);
 }
 
 //-----------------------------------------------------------------------------
@@ -189,4 +189,18 @@ Vector4D Vector4D::normalized() const {
   Vector4D copy = *this;
   copy.normalize();
   return copy;
+}
+
+vec_t Vector4D::dot(const Vector4D &v) const {
+  return (x*v.x + y*v.y + z*v.z + w*v.w);
+}
+
+//@NOTE: threats the vectors as Vector3D
+Vector4D Vector4D::cross(const Vector4D &v) const {
+  vec_t X = y * v.z - z * v.y ;
+  vec_t Y = z * v.x - x * v.z ;
+  vec_t Z = x * v.y - y * v.x ;
+  vec_t W = w * v.w;
+
+  return Vector4D(X, Y, Z, W);
 }

@@ -48,8 +48,12 @@ public:
 
   // Geometric methods
   vec_t length() const;
+
   void normalize();
   Vector4D normalized() const;
+
+  vec_t dot(const Vector4D &v) const;
+  Vector4D cross(const Vector4D &v) const;
 
 };
 

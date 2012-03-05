@@ -51,6 +51,7 @@ protected:
   void initShaders();
 
   void showFPS();
+  void drawAxis(float len = 1.0);
 
   void perspective(double fovY, double aspect, double zNear, double zFar);
 

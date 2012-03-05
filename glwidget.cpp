@@ -84,6 +84,8 @@ void GLWidget::initializeGL() {
 
   initShaders();
 
+  _camera.rotate(30, 30);
+
   _emitter = new Emitter(Vector3D(0, 0, 0), 0.001, 1024*100 );
 
   _emitter->renderer(new Rend_Point());
@@ -111,6 +113,8 @@ void GLWidget::paintGL() {
   glLoadIdentity();
 
   _camera.apply();
+
+  drawAxis();
 
   _emitter->draw();
 
@@ -161,6 +165,26 @@ void GLWidget::initShaders() {
 
 void GLWidget::showFPS() {
   qDebug() << "FPS: " << _timer.fps();
+}
+
+void GLWidget::drawAxis(float len) {
+  glBegin(GL_LINES);
+    glColor3f(1.0, 0.0, 0.0);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(len, 0.0, 0.0);
+  glEnd();
+
+  glBegin(GL_LINES);
+    glColor3f(0.0, 1.0, 0.0);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.0, len, 0.0);
+  glEnd();
+
+  glBegin(GL_LINES);
+    glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.0, 0.0, len);
+  glEnd();
 }
 
 void GLWidget::perspective(double fovY, double aspect, double zNear, double zFar) {

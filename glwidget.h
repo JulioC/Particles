@@ -40,7 +40,8 @@ protected:
   QGLShader *_fragShader;
   QGLShaderProgram *_shaderProgram;
 
-  Emitter* _emitter;
+  int _emitterCount;
+  Emitter* _emitters[10];
 
   void initializeGL();
   void paintGL();

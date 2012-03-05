@@ -32,7 +32,8 @@ HEADERS += \
   initializer.h \
   timer.h \
   color.h \
-  camera.h
+  camera.h \
+  random.h
 
 SOURCES += \
   particle.cpp \
@@ -43,7 +44,8 @@ SOURCES += \
   emitter.cpp \
   timer.cpp \
   color.cpp \
-  camera.cpp
+  camera.cpp \
+  random.cpp
 
 RESOURCES += \
   resources.qrc

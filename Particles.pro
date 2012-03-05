@@ -22,7 +22,8 @@ OPERATORS = \
   fade
 
 ZONE = \
-  cone
+  cone \
+  sphere
 
 HEADERS += \
   particle.h \

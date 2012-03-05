@@ -1,6 +1,5 @@
 #include "glwidget.h"
 
-#include <time.h>
 #include <math.h>
 
 #include <QKeyEvent>
@@ -70,8 +69,6 @@ void GLWidget::animate() {
 }
 
 void GLWidget::initializeGL() {
-  srand(time(NULL));
-
   glClearColor(.0, .0, .0, 1.0);
   glShadeModel(GL_FLAT);
   glEnable(GL_DEPTH_TEST);

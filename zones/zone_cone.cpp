@@ -11,6 +11,7 @@ Zone_Cone::Zone_Cone(const Vector3D &center,
               float angleMin, float angleMax,
               float radiusMin, float radiusMax) :
   Zone(),
+  _center(center),
   _axis(),
   _angleMin(angleMin),
   _angleRange(angleMax - angleMin),
@@ -61,6 +62,7 @@ Vector3D Zone_Cone::point() {
   res.normalize();
 
   res *= Random::ranged(_radiusMin, _radiusRange);
+  res += _center;
 
   return res;
 }

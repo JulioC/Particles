@@ -7,7 +7,7 @@
 #include "operator.h"
 #include "initializer.h"
 
-Emitter::Emitter(const Vector4D &pos, float itv, int max) :
+Emitter::Emitter(const Vector3D &pos, float itv, int max) :
   _position(pos),
   _interval(itv),
   _maxParticles(max),

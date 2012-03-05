@@ -1,7 +1,7 @@
 #ifndef INIT_SPEEDOFFSET_H
 #define INIT_SPEEDOFFSET_H
 
-#include "vector4d.h"
+#include "vector3d.h"
 #include "initializer.h"
 
 class Init_SpeedOffset : public Initializer {

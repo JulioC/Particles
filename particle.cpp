@@ -2,7 +2,7 @@
 
 #include <float.h>
 
-Particle::Particle(const Vector4D &p) :
+Particle::Particle(const Vector3D &p) :
   position(p),
   velocity(1, 1, 1),
   color(255, 255, 255, 255),

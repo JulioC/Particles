@@ -1,7 +1,7 @@
 #ifndef INIT_SPEED_H
 #define INIT_SPEED_H
 
-#include "vector4d.h"
+#include "vector3d.h"
 #include "initializer.h"
 
 class Init_Speed : public Initializer {

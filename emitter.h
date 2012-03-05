@@ -1,7 +1,7 @@
 #ifndef EMITTER_H
 #define EMITTER_H
 
-#include "vector4d.h"
+#include "vector3d.h"
 
 #define MAX_PARTICLES 1024
 #define MAX_INITIALIZERS 32
@@ -14,7 +14,7 @@ class Initializer;
 
 class Emitter {
 public:
-  Emitter(const Vector4D &pos, float itv = 1., int max = MAX_PARTICLES);
+  Emitter(const Vector3D &pos, float itv = 1., int max = MAX_PARTICLES);
   virtual ~Emitter();
 
   // These should be called on every animation frame
@@ -28,7 +28,7 @@ public:
   bool addOperator(Operator *opr);
 
 protected:
-  Vector4D _position;
+  Vector3D _position;
 
   float _interval;
 

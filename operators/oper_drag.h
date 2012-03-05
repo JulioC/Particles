@@ -1,7 +1,7 @@
 #ifndef OPER_DRAG_H
 #define OPER_DRAG_H
 
-#include "vector4d.h"
+#include "vector3d.h"
 #include "operator.h"
 
 class Oper_Drag : public Operator {

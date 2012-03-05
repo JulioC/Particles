@@ -21,7 +21,7 @@ OPERATORS = \
 
 HEADERS += \
   particle.h \
-  vector4d.h \
+  vector3d.h \
   window.h \
   glwidget.h \
   emitter.h \
@@ -33,7 +33,7 @@ HEADERS += \
 
 SOURCES += \
   particle.cpp \
-  vector4d.cpp \
+  vector3d.cpp \
   main.cpp \
   window.cpp \
   glwidget.cpp \

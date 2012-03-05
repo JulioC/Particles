@@ -2,7 +2,7 @@
 
 #include "particle.h"
 
-Oper_Acceleration::Oper_Acceleration(const Vector4D &acceleration) :
+Oper_Acceleration::Oper_Acceleration(const Vector3D &acceleration) :
   _acceleration(acceleration) {
 }
 

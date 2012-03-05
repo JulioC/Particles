@@ -3,8 +3,9 @@
 
 #include <QGLWidget>
 
+#include "camera.h"
 #include "timer.h"
-#include "vector4d.h"
+#include "vector3d.h"
 
 class Emitter;
 

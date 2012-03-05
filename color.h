@@ -24,4 +24,4 @@ public:
   const float& operator[](int index) const;
 };
 
-#endif // VECTOR4D_H
+#endif // COLOR_H

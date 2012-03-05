@@ -82,7 +82,7 @@ void GLWidget::initializeGL() {
 
   initShaders();
 
-  _emitter = new Emitter(Vector4D(0, 0, 0), 0.001, 1024*100 );
+  _emitter = new Emitter(Vector3D(0, 0, 0), 0.001, 1024*100 );
 
   _emitter->renderer(new Rend_Point());
 
@@ -90,12 +90,12 @@ void GLWidget::initializeGL() {
   _emitter->addInitializer(new Init_Color(Color(200, 30, 0), Color(220, 60, 0)));
   _emitter->addInitializer(new Init_Speed(0.8, 0.8));
   _emitter->addInitializer(new Init_Radius(1.0, 10.0));
-  //_emitter->addInitializer(new Init_PositionOffset(Vector4D(-.1, 0, -.1), Vector4D(.1, 0, .1)));
-  //_emitter->addInitializer(new Init_PositionRing(Vector4D(0, 0, 0), Vector4D(0, 0, 1), 0.1, 0));
-  _emitter->addInitializer(new Init_DirectionCone(Vector4D(0, 0.8, 0), 0.4, 0.2));
+  //_emitter->addInitializer(new Init_PositionOffset(Vector3D(-.1, 0, -.1), Vector3D(.1, 0, .1)));
+  //_emitter->addInitializer(new Init_PositionRing(Vector3D(0, 0, 0), Vector3D(0, 0, 1), 0.1, 0));
+  _emitter->addInitializer(new Init_DirectionCone(Vector3D(0, 0.8, 0), 0.4, 0.2));
 
   _emitter->addOperator(new Oper_Decay());
-  _emitter->addOperator(new Oper_Acceleration(Vector4D(0, -0.4, 0)));
+  _emitter->addOperator(new Oper_Acceleration(Vector3D(0, -0.4, 0)));
   _emitter->addOperator(new Oper_Drag(0.1));
   _emitter->addOperator(new Oper_Fade(0.5));
 }

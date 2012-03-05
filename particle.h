@@ -2,13 +2,13 @@
 #define PARTICLE_H
 
 #include "color.h"
-#include "vector4d.h"
+#include "vector3d.h"
 
 class Particle {
 public:
   // Exposed properties for ease of access
-  Vector4D position;
-  Vector4D velocity;
+  Vector3D position;
+  Vector3D velocity;
 
   Color color;
 
@@ -18,7 +18,7 @@ public:
 
   bool dead;
 
-  Particle(const Vector4D &p);
+  Particle(const Vector3D &p);
 
   void update(float elapsed);
 

@@ -42,7 +42,7 @@ GLWidget::GLWidget(QWidget *parent) :
   // Set the animation timer
   _qtimer = new QTimer(this);
   connect(_qtimer, SIGNAL(timeout()), this, SLOT(animate()));
-  _qtimer->start(10);
+  _qtimer->start();
 
   // Fire the internal timer
   _timer.start();
@@ -86,26 +86,96 @@ void GLWidget::initializeGL() {
 
   initShaders();
 
-  _camera.rotate(30, 30);
+  _camera.rotate(30, -20);
 
-  _emitter = new Emitter(Vector3D(0, 0, 0), 0.0005, 1024*10 );
+  /* water */ 
+  _emitter = new Emitter(Vector3D(0, 0, 0), 0.0001 );
 
-  //_emitter->renderer(new Rend_Point());
-  //_emitter->renderer(new Rend_Sphere(2));
   _emitter->renderer(new Rend_Square());
 
   _emitter->addInitializer(new Init_Lifetime(4, 2));
-  _emitter->addInitializer(new Init_Color(Color(200, 30, 0), Color(220, 60, 0)));
+  _emitter->addInitializer(new Init_Color(Color(90, 100, 140, 0.1), Color(120, 140, 180, 0.8)));
   _emitter->addInitializer(new Init_Speed(0.8, 0.8));
   _emitter->addInitializer(new Init_Radius(0.01, 0.001));
-  //_emitter->addInitializer(new Init_PositionOffset(Vector3D(-.1, 0, -.1), Vector3D(.1, 0, .1)));
-  //_emitter->addInitializer(new Init_PositionRing(Vector3D(0, 0, 0), Vector3D(0, 0, 1), 0.1, 0));
+  _emitter->addInitializer(new Init_PositionRing(Vector3D(0, 0, 0), Vector3D(0, 0, 1), 0.05, 0));
   _emitter->addInitializer(new Init_DirectionCone(Vector3D(0, 0.8, 0), 25, 10));
 
   _emitter->addOperator(new Oper_Decay());
   _emitter->addOperator(new Oper_Acceleration(Vector3D(0, -0.4, 0)));
   _emitter->addOperator(new Oper_Drag(0.1));
   _emitter->addOperator(new Oper_Fade(0.5));
+  /* /water */
+
+  /* fire */ /*
+  _emitter = new Emitter(Vector3D(0, 0, 0), 0.0001 );
+
+  _emitter->renderer(new Rend_Square());
+
+  _emitter->addInitializer(new Init_Lifetime(2, 1));
+  _emitter->addInitializer(new Init_Color(Color(240, 10, 0), Color(140, 80, 20)));
+  _emitter->addInitializer(new Init_Speed(0.1, 0.4));
+  _emitter->addInitializer(new Init_Radius(0.01, 0.001));
+  _emitter->addInitializer(new Init_PositionOffset(Vector3D(-.1, 0, -.1), Vector3D(.1, 0, .1)));
+  _emitter->addInitializer(new Init_DirectionCone(Vector3D(0, 1, 0), 20));
+
+  _emitter->addOperator(new Oper_Decay());
+  _emitter->addOperator(new Oper_Acceleration(Vector3D(0, 0.1, 0)));
+  _emitter->addOperator(new Oper_Fade(1.0));
+  /* /fire */
+
+  /* ? */ /*
+  _emitter = new Emitter(Vector3D(0, 0, 0), 0.0002 );
+
+  _emitter->renderer(new Rend_Point());
+
+  _emitter->addInitializer(new Init_Lifetime(4, 2));
+  _emitter->addInitializer(new Init_Color(Color(200, 10, 0), Color(140, 80, 20)));
+  _emitter->addInitializer(new Init_Speed(0.8, 0.8));
+  _emitter->addInitializer(new Init_Radius(2.0, 1.1));
+  _emitter->addInitializer(new Init_PositionRing(Vector3D(0, 0, 0), Vector3D(0, 0, 1), 0.2, 0));
+  _emitter->addInitializer(new Init_DirectionCone(Vector3D(0, -0.8, 0), 25, 10));
+
+  _emitter->addOperator(new Oper_Decay());
+  _emitter->addOperator(new Oper_Acceleration(Vector3D(0, -0.001, 0)));
+  _emitter->addOperator(new Oper_Drag(0.1));
+  _emitter->addOperator(new Oper_Fade(0.5));
+  /* /? */
+
+  /* stars */ /*
+  _emitter = new Emitter(Vector3D(0, 0, 0), 0.05 );
+
+  _emitter->renderer(new Rend_Square());
+
+  _emitter->addInitializer(new Init_Lifetime(2, 1));
+  _emitter->addInitializer(new Init_Color(Color(255, 255, 255), Color(255, 255, 255)));
+  _emitter->addInitializer(new Init_Speed(0.01, 0.02));
+  _emitter->addInitializer(new Init_Radius(0.001, 0.005));
+  _emitter->addInitializer(new Init_PositionOffset(Vector3D(-1, -1, -1), Vector3D(1, 1, 1)));
+  _emitter->addInitializer(new Init_DirectionCone(Vector3D(0, -0.8, 0), 25, 360));
+
+  _emitter->addOperator(new Oper_Decay());
+  _emitter->addOperator(new Oper_Fade(0.5));
+  /* /stars */
+
+  /* ? */ /*
+  _emitter = new Emitter(Vector3D(0, 0, 0), 0.01 );
+
+  //_emitter->renderer(new Rend_Point());
+  _emitter->renderer(new Rend_Sphere(2));
+  //_emitter->renderer(new Rend_Square());
+
+  _emitter->addInitializer(new Init_Lifetime(4, 3));
+  _emitter->addInitializer(new Init_Color(Color(200, 200, 255), Color(255, 255, 255)));
+  _emitter->addInitializer(new Init_Speed(0, 0));
+  _emitter->addInitializer(new Init_Radius(0.01, 0.001));
+  _emitter->addInitializer(new Init_PositionRing(Vector3D(0, 0, 0), Vector3D(0, 0, 1), 1));
+  _emitter->addInitializer(new Init_PositionOffset(Vector3D(0, 1, 0), Vector3D(0, 1, 0)));
+  _emitter->addInitializer(new Init_DirectionCone(Vector3D(0, 1, 0), 360));
+
+  _emitter->addOperator(new Oper_Decay());
+  _emitter->addOperator(new Oper_Acceleration(Vector3D(0, -0.2, 0)));
+  _emitter->addOperator(new Oper_Fade(1.0));
+  /* /? */
 }
 
 void GLWidget::paintGL() {
@@ -131,7 +201,7 @@ void GLWidget::resizeGL(int w, int h) {
   glPushMatrix();
   glMatrixMode(GL_PROJECTION); //set the matrix to projection
   glLoadIdentity();
-  perspective(75.0, (GLfloat)w / (GLfloat)h, 0.0, 100.0);
+  perspective(75.0, (GLfloat)w / (GLfloat)h, -10.0, 200.0);
   glPopMatrix();
 }
 

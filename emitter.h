@@ -3,7 +3,7 @@
 
 #include "vector3d.h"
 
-#define MAX_PARTICLES 1024
+#define MAX_PARTICLES 1024 * 50
 #define MAX_INITIALIZERS 32
 #define MAX_OPERATORS 32
 

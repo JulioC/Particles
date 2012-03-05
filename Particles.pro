@@ -1,7 +1,9 @@
 QT += core gui opengl
 
 RENDERERS = \
-  point
+  point \
+  sphere \
+  square
 
 INITIALIZERS = \
   lifetime \

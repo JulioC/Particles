@@ -5,7 +5,7 @@
 
 #include "particle.h"
 
-const float Init_PositionRing::TWOPI = 6.283185307;
+const float Init_PositionRing::TWOPI = M_PI * 2;
 
 Init_PositionRing::Init_PositionRing(const Vector3D &center, const Vector3D &normal, float maxRadius, float minRadius) :
   Initializer(),

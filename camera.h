@@ -13,8 +13,6 @@ public:
   void rotate(float pitch, float yaw, float roll = 0.0);
 
 private:
-  static const float PI;
-
   Vector3D _position;
   Vector3D _direction;
 

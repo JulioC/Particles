@@ -13,6 +13,8 @@
 #include "emitter.h"
 
 #include "renderers/rend_point.h"
+#include "renderers/rend_sphere.h"
+#include "renderers/rend_square.h"
 
 #include "initializers/init_color.h"
 #include "initializers/init_directioncone.h"
@@ -86,17 +88,19 @@ void GLWidget::initializeGL() {
 
   _camera.rotate(30, 30);
 
-  _emitter = new Emitter(Vector3D(0, 0, 0), 0.001, 1024*100 );
+  _emitter = new Emitter(Vector3D(0, 0, 0), 0.0005, 1024*10 );
 
-  _emitter->renderer(new Rend_Point());
+  //_emitter->renderer(new Rend_Point());
+  //_emitter->renderer(new Rend_Sphere(2));
+  _emitter->renderer(new Rend_Square());
 
   _emitter->addInitializer(new Init_Lifetime(4, 2));
   _emitter->addInitializer(new Init_Color(Color(200, 30, 0), Color(220, 60, 0)));
   _emitter->addInitializer(new Init_Speed(0.8, 0.8));
-  _emitter->addInitializer(new Init_Radius(1.0, 10.0));
+  _emitter->addInitializer(new Init_Radius(0.01, 0.001));
   //_emitter->addInitializer(new Init_PositionOffset(Vector3D(-.1, 0, -.1), Vector3D(.1, 0, .1)));
   //_emitter->addInitializer(new Init_PositionRing(Vector3D(0, 0, 0), Vector3D(0, 0, 1), 0.1, 0));
-  _emitter->addInitializer(new Init_DirectionCone(Vector3D(0, 0.8, 0), 25, 20));
+  _emitter->addInitializer(new Init_DirectionCone(Vector3D(0, 0.8, 0), 25, 10));
 
   _emitter->addOperator(new Oper_Decay());
   _emitter->addOperator(new Oper_Acceleration(Vector3D(0, -0.4, 0)));

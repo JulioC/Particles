@@ -91,12 +91,12 @@ void GLWidget::initializeGL() {
   /* water */ 
   _emitter = new Emitter(Vector3D(0, 0, 0), 0.0001 );
 
-  _emitter->renderer(new Rend_Square());
+  _emitter->renderer(new Rend_Point());
 
   _emitter->addInitializer(new Init_Lifetime(4, 2));
-  _emitter->addInitializer(new Init_Color(Color(90, 100, 140, 0.1), Color(120, 140, 180, 0.8)));
+  _emitter->addInitializer(new Init_Color(Color(40, 40, 100, 0.1), Color(80, 90, 120, 0.8)));
   _emitter->addInitializer(new Init_Speed(0.8, 0.8));
-  _emitter->addInitializer(new Init_Radius(0.01, 0.001));
+  _emitter->addInitializer(new Init_Radius(2.5, 1.5));
   _emitter->addInitializer(new Init_PositionRing(Vector3D(0, 0, 0), Vector3D(0, 0, 1), 0.05, 0));
   _emitter->addInitializer(new Init_DirectionCone(Vector3D(0, 0.8, 0), 25, 10));
 

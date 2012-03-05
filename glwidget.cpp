@@ -188,9 +188,8 @@ void GLWidget::drawAxis(float len) {
 }
 
 void GLWidget::perspective(double fovY, double aspect, double zNear, double zFar) {
-  const double pi = 3.1415926535897932384626433832795;
   double fW, fH;
-  fH = tan( fovY / 360 * pi ) * zNear;
+  fH = tan(M_PI * fovY / 360) * zNear;
   fW = fH * aspect;
   glFrustum( -fW, fW, -fH, fH, zNear, zFar );
 }

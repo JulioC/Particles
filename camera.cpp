@@ -4,8 +4,6 @@
 
 #include <qgl.h>
 
-const float Camera::PI = 3.1415265359;
-
 Camera::Camera() :
   _position(0, 0, 0),
   _direction(0, 0, -1),

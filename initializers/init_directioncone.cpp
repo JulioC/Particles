@@ -5,7 +5,7 @@
 
 #include "particle.h"
 
-const float Init_DirectionCone::TWOPI = 6.283185307;
+const float Init_DirectionCone::TWOPI = M_PI * 2;
 
 Init_DirectionCone::Init_DirectionCone(const Vector3D &normal, float maxAngle, float minAngle) :
   Initializer(),

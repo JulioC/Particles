@@ -3,6 +3,7 @@
 #include <time.h>
 #include <math.h>
 
+#include <QKeyEvent>
 #include <QTimer>
 #include <QVector3D>
 #include <QGLShader>
@@ -29,11 +30,12 @@
 
 GLWidget::GLWidget(QWidget *parent) :
   QGLWidget(parent),
+  _camera(),
   _timer(),
+  _qtimer(NULL),
   _vertShader(NULL),
   _fragShader(NULL),
   _shaderProgram(NULL),
-  _qtimer(NULL),
   _emitter(NULL) {
   // Set the animation timer
   _qtimer = new QTimer(this);
@@ -104,10 +106,14 @@ void GLWidget::paintGL() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   glPushMatrix();
+
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
+  _camera.apply();
+
   _emitter->draw();
+
   glPopMatrix();
 }
 
@@ -119,6 +125,14 @@ void GLWidget::resizeGL(int w, int h) {
   glLoadIdentity();
   perspective(75.0, (GLfloat)w / (GLfloat)h, 0.0, 100.0);
   glPopMatrix();
+}
+
+void GLWidget::keyPressEvent(QKeyEvent *event) {
+  switch(event->key()){
+    case Qt::Key_W:
+    case Qt::Key_Up:
+    break;
+  }
 }
 
 void GLWidget::initShaders() {

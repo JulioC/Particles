@@ -31,15 +31,22 @@ public slots:
   virtual void animate();
 
 protected:
+  Camera _camera;
+
   Timer _timer;
+  QTimer *_qtimer;
 
   QGLShader *_vertShader;
   QGLShader *_fragShader;
   QGLShaderProgram *_shaderProgram;
 
+  Emitter* _emitter;
+
   void initializeGL();
   void paintGL();
   void resizeGL(int width, int height);
+
+  void keyPressEvent(QKeyEvent *event);
 
   void initShaders();
 
@@ -47,10 +54,6 @@ protected:
 
   void perspective(double fovY, double aspect, double zNear, double zFar);
 
-private:
-  QTimer *_qtimer;
-
-  Emitter* _emitter;
 };
 
 #endif // GLWIDGET_H

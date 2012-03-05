@@ -29,7 +29,8 @@ HEADERS += \
   operator.h \
   initializer.h \
   timer.h \
-  color.h
+  color.h \
+  camera.h
 
 SOURCES += \
   particle.cpp \
@@ -39,7 +40,8 @@ SOURCES += \
   glwidget.cpp \
   emitter.cpp \
   timer.cpp \
-  color.cpp
+  color.cpp \
+  camera.cpp
 
 RESOURCES += \
   resources.qrc

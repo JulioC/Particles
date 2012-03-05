@@ -12,6 +12,9 @@ public:
   void move(const Vector3D &direction);
   void rotate(float pitch, float yaw, float roll = 0.0);
 
+  void move_forwards(float distance);
+  void move_right(float distance);
+
 private:
   Vector3D _position;
   Vector3D _direction;

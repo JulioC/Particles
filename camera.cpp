@@ -27,4 +27,29 @@ void Camera::rotate(float pitch, float yaw, float roll) {
   _pitch += pitch;
   _yaw += yaw;
   _roll += roll;
+
+  float pitch_rad = M_PI * _pitch / 180;
+  float yaw_rad = M_PI * _yaw / 180;
+
+  //@FIXME: this calculation is wrong
+  // We should do matrix multiplying to transform local direction to world coord
+  _direction.x = sin(yaw_rad) * pitch_rad;
+  _direction.y = sin(pitch_rad);
+  _direction.z = cos(yaw_rad) * pitch_rad;
+}
+
+void Camera::move_forwards(float distance) {
+  Vector3D direction;
+  direction.x = _direction.x * distance;
+  direction.y = _direction.y * distance;
+  direction.z = _direction.z * distance;
+  _position += direction;
+}
+
+void Camera::move_right(float distance) {
+  Vector3D direction;
+  direction.x = - _direction.x * distance;
+  direction.y = 0.0;
+  direction.z = _direction.z * distance;
+  _position += direction;
 }

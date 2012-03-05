@@ -21,6 +21,9 @@ OPERATORS = \
   drag \
   fade
 
+ZONE = \
+  cone
+
 HEADERS += \
   particle.h \
   vector3d.h \
@@ -33,7 +36,8 @@ HEADERS += \
   timer.h \
   color.h \
   camera.h \
-  random.h
+  random.h \
+  zone.h
 
 SOURCES += \
   particle.cpp \
@@ -68,4 +72,8 @@ for(name, INITIALIZERS) {
 for(name, OPERATORS) {
   HEADERS += operators/oper_$${name}.h
   SOURCES += operators/oper_$${name}.cpp
+}
+for(name, ZONES) {
+  HEADERS += zones/zone_$${name}.h
+  SOURCES += zones/zone_$${name}.cpp
 }

@@ -1,6 +1,7 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include <QTimer>
 #include <QWidget>
 
 #include "glwidget.h"
@@ -13,8 +14,12 @@ class Window : public QWidget {
 public:
   Window();
 
+public slots:
+  void updateFPS();
+
 private:
-  GLWidget *glWidget;
+  GLWidget _glWidget;
+  QTimer _qtimer;
 
 };
 

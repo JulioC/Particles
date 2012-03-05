@@ -25,6 +25,8 @@ public:
   QSize minimumSizeHint() const;
   QSize sizeHint() const;
 
+  float getFPS() { return _timer.fps(); }
+
 public slots:
   virtual void animate();
 

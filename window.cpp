@@ -2,12 +2,17 @@
 
 #include <QtGui>
 
-Window::Window() {
-  glWidget = new GLWidget(this);
+Window::Window() :
+  _glWidget(this),
+  _qtimer(this) {
+  connect(&_qtimer, SIGNAL(timeout()), this, SLOT(updateFPS()));
+  _qtimer.start(1000);
 
   QHBoxLayout *mainLayout = new QHBoxLayout(this);
-  mainLayout->addWidget(glWidget);
+  mainLayout->addWidget(&_glWidget);
   setLayout(mainLayout);
+}
 
-  setWindowTitle(tr("Particles"));
+void Window::updateFPS() {
+  setWindowTitle(QString("Particles (%1 FPS)").arg((int)_glWidget.getFPS()));
 }

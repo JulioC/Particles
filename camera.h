@@ -10,7 +10,7 @@ public:
   void apply();
 
   void move(const Vector3D &direction);
-  void rotate(float pitch, float yaw, float roll);
+  void rotate(float pitch, float yaw, float roll = 0.0);
 
 private:
   static const float PI;

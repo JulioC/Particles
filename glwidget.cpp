@@ -96,7 +96,7 @@ void GLWidget::initializeGL() {
   _emitter->addInitializer(new Init_Radius(1.0, 10.0));
   //_emitter->addInitializer(new Init_PositionOffset(Vector3D(-.1, 0, -.1), Vector3D(.1, 0, .1)));
   //_emitter->addInitializer(new Init_PositionRing(Vector3D(0, 0, 0), Vector3D(0, 0, 1), 0.1, 0));
-  _emitter->addInitializer(new Init_DirectionCone(Vector3D(0, 0.8, 0), 0.4, 0.2));
+  _emitter->addInitializer(new Init_DirectionCone(Vector3D(0, 0.8, 0), 25, 20));
 
   _emitter->addOperator(new Oper_Decay());
   _emitter->addOperator(new Oper_Acceleration(Vector3D(0, -0.4, 0)));

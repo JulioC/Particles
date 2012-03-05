@@ -6,7 +6,7 @@ class Emitter;
 
 class Operator {
 public:
-  virtual ~Operator() {};
+  virtual ~Operator() = 0;
   virtual void apply(Particle *p, float elapsed) = 0;
 };
 

@@ -34,6 +34,8 @@
 #include "v3dgenerators/v3dgen_point.h"
 #include "v3dgenerators/v3dgen_sphere.h"
 
+#include "colorgenerators/colorgen_constant.h"
+
 GLWidget::GLWidget(QWidget *parent) :
   QGLWidget(parent),
   _camera(),
@@ -107,7 +109,7 @@ void GLWidget::initializeGL() {
   _emitters[0]->renderer(new Rend_Point());
 
   _emitters[0]->addInitializer(new Init_Lifetime(4, 2));
-  _emitters[0]->addInitializer(new Init_Color(Color(40, 40, 100, 0.1), Color(80, 90, 120, 0.8)));
+  _emitters[0]->addInitializer(new Init_Color(new ColorGen_Constant(Color(0x00, 0x00, 0xAE)))); // Color(40, 40, 100, 0.1), Color(80, 90, 120, 0.8)
   _emitters[0]->addInitializer(new Init_Speed(0.6, 0.8));
   _emitters[0]->addInitializer(new Init_Radius(2.5, 1.5));
   _emitters[0]->addInitializer(new Init_Position(new V3DGen_Cylinder(Vector3D(0, 0, 0), Vector3D(0, 1, 0), 0, 0, 0.005, 0.01)));

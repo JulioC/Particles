@@ -6,11 +6,11 @@
 int Random::_seed = 0;
 
 rand_t Random::between(rand_t min, rand_t max, dist_t type) {
-  return min + (max - min) * value(type);
+  return min + value((max - min), type);
 }
 
-rand_t Random::ranged(rand_t min, rand_t max, dist_t type) {
-  return min + max * value(type);
+rand_t Random::ranged(rand_t min, rand_t range, dist_t type) {
+  return min + value(range, type);
 }
 
 rand_t Random::value(rand_t multiplier, dist_t type) {

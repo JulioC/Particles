@@ -7,11 +7,9 @@ RENDERERS = \
 
 INITIALIZERS = \
   lifetime \
-  positionoffset \
   speedoffset \
   color \
   speed \
-  positionring \
   radius \
   direction \
   position

@@ -13,8 +13,8 @@ Zone_Cone::Zone_Cone(const Vector3D &center,
   Zone(),
   _center(center),
   _axis(),
-  _angleMin(angleMin),
-  _angleRange(angleMax - angleMin),
+  _angleMin(TWOPI * angleMin / 360),
+  _angleRange(TWOPI * (angleMax - angleMin) / 360),
   _radiusMin(radiusMin),
   _radiusRange(radiusMax - radiusMin) {
   // Get our coord axis
@@ -56,8 +56,8 @@ Vector3D Zone_Cone::point() {
   float sin_omega = sin(omega);
 
   res *= cos(omega);
-  res += _axis[0] * cos(theta) * sin_omega;
-  res += _axis[1] * sin(theta) * sin_omega;
+  res += _axis[1] * cos(theta) * sin_omega;
+  res += _axis[2] * sin(theta) * sin_omega;
 
   res.normalize();
 

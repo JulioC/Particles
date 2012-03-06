@@ -5,7 +5,7 @@
 
 class Zone_Sphere : public Zone {
 public:
-  Zone_Sphere(const Vector3D &center, float radiusMin, float radiusMax);
+  Zone_Sphere(const Vector3D &center, float radiusMin = 0, float radiusMax = 1);
   virtual ~Zone_Sphere();
 
   virtual bool inside(const Vector3D &point);

@@ -13,7 +13,7 @@ INITIALIZERS = \
   speed \
   positionring \
   radius \
-  directioncone
+  direction
 
 OPERATORS = \
   decay \
@@ -21,7 +21,7 @@ OPERATORS = \
   drag \
   fade
 
-ZONE = \
+ZONES = \
   cone \
   sphere \
   box \

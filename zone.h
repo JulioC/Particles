@@ -5,7 +5,7 @@
 
 class Zone {
 public:
-  virtual ~Zone() = 0;
+  virtual ~Zone() {};
   virtual bool inside(const Vector3D &point) = 0;
   virtual Vector3D point() = 0;
 };

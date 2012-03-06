@@ -7,8 +7,8 @@ class Zone_Cone : public Zone {
 public:
   Zone_Cone(const Vector3D &center,
               const Vector3D &top,
-              float angleMin, float angleMax,
-              float radiusMin, float radiusMax);
+              float angleMin = 0, float angleMax = 45,
+              float radiusMin = 0, float radiusMax = 1);
   virtual ~Zone_Cone();
 
   virtual bool inside(const Vector3D &point);

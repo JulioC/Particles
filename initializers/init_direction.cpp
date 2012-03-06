@@ -23,10 +23,10 @@ void Init_Direction::apply(Particle *p, Emitter *e) {
   float speed = p->velocity.length();
   Vector3D res(0, 0, 0);
   if(_offset) {
-    res = _zone->point();
+    res = p->velocity.normalized();
   }
 
-  res += _zone->point();
+  res += _zone->point().normalized();
   res.normalize();
 
   p->velocity = res * speed;

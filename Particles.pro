@@ -13,7 +13,8 @@ INITIALIZERS = \
   speed \
   positionring \
   radius \
-  direction
+  direction \
+  position
 
 OPERATORS = \
   decay \

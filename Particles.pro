@@ -23,7 +23,9 @@ OPERATORS = \
 
 ZONE = \
   cone \
-  sphere
+  sphere \
+  box \
+  point
 
 HEADERS += \
   particle.h \

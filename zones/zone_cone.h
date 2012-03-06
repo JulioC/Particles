@@ -1,7 +1,6 @@
 #ifndef ZONE_CONE_H
 #define ZONE_CONE_H
 
-#include "vector3d.h"
 #include "zone.h"
 
 class Zone_Cone : public Zone {

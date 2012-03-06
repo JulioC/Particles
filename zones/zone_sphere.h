@@ -1,7 +1,6 @@
 #ifndef ZONE_SPHERE_H
 #define ZONE_SPHERE_H
 
-#include "vector3d.h"
 #include "zone.h"
 
 class Zone_Sphere : public Zone {

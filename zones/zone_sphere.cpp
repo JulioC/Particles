@@ -28,8 +28,8 @@ bool Zone_Sphere::inside(const Vector3D &point) {
 }
 
 Vector3D Zone_Sphere::point() {
-  float theta = TWOPI * Random::value();
-  float omega = TWOPI * Random::value();
+  float theta = Random::value(TWOPI);
+  float omega = Random::value(TWOPI);
 
   float sin_omega = sin(omega);
 

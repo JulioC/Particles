@@ -25,7 +25,8 @@ ZONES = \
   cone \
   sphere \
   box \
-  point
+  point \
+  cylinder
 
 HEADERS += \
   particle.h \

@@ -13,16 +13,20 @@ rand_t Random::ranged(rand_t min, rand_t max, dist_t type) {
   return min + max * value(type);
 }
 
-rand_t Random::value(dist_t type) {
+rand_t Random::value(rand_t multiplier, dist_t type) {
   if(_seed == 0) {
     initialize();
   }
 
+  rand_t rand;
+
   switch(type){
     case RANDOM_DEFAULT:
     default:
-      return valDefault();
+      rand = valDefault();
   }
+
+  return multiplier * rand;
 }
 
 void Random::initialize() {

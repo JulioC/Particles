@@ -11,7 +11,7 @@ public:
 
   static rand_t between(rand_t min, rand_t max, dist_t type = RANDOM_DEFAULT);
   static rand_t ranged(rand_t min, rand_t range, dist_t type = RANDOM_DEFAULT);
-  static rand_t value(dist_t type = RANDOM_DEFAULT);
+  static rand_t value(rand_t multiplier = 1, dist_t type = RANDOM_DEFAULT);
 
 protected:
   static int _seed;

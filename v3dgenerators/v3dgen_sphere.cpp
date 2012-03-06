@@ -16,7 +16,7 @@ V3DGen_Sphere::V3DGen_Sphere(const Vector3D &center, float radiusMin, float radi
 V3DGen_Sphere::~V3DGen_Sphere() {
 }
 
-Vector3D V3DGen_Sphere::point() {
+Vector3D V3DGen_Sphere::generate() {
   float theta = Random::value(TWOPI);
   float omega = Random::value(TWOPI);
 

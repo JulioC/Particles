@@ -8,7 +8,7 @@ public:
   V3DGen_Box(const Vector3D &min, const Vector3D &max);
   virtual ~V3DGen_Box();
 
-  virtual Vector3D point();
+  virtual Vector3D generate();
 
 protected:
   Vector3D _min;

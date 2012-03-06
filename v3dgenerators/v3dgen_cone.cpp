@@ -35,7 +35,7 @@ V3DGen_Cone::V3DGen_Cone(const Vector3D &center,
 V3DGen_Cone::~V3DGen_Cone() {
 }
 
-Vector3D V3DGen_Cone::point() {
+Vector3D V3DGen_Cone::generate() {
   Vector3D res(0, 0, 0);
 
   float theta = Random::value(TWOPI);

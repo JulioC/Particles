@@ -26,7 +26,7 @@ void Init_Direction::apply(Particle *p, Emitter *e) {
     res = p->velocity.normalized();
   }
 
-  res += _generator->point().normalized();
+  res += _generator->generate().normalized();
   res.normalize();
 
   p->velocity = res * speed;

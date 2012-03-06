@@ -34,7 +34,7 @@ V3DGen_Cylinder::V3DGen_Cylinder(const Vector3D &bottom, const Vector3D &top,
 V3DGen_Cylinder::~V3DGen_Cylinder() {
 }
 
-Vector3D V3DGen_Cylinder::point() {
+Vector3D V3DGen_Cylinder::generate() {
   Vector3D res(0, 0, 0);
 
   float theta = Random::value(TWOPI);

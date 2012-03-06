@@ -25,7 +25,7 @@ void Init_Position::apply(Particle *p, Emitter *e) {
     res = p->position;
   }
 
-  res += _generator->point();
+  res += _generator->generate();
 
   p->position = res;
 }

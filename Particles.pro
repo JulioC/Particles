@@ -27,6 +27,9 @@ V3DGENERATORS = \
   point \
   cylinder
 
+COLORGENERATORS = \
+  constant
+
 HEADERS += \
   particle.h \
   vector3d.h \
@@ -40,7 +43,8 @@ HEADERS += \
   color.h \
   camera.h \
   random.h \
-  v3dgenerator.h
+  v3dgenerator.h \
+  colorgenerator.h
 
 SOURCES += \
   particle.cpp \
@@ -79,4 +83,8 @@ for(name, OPERATORS) {
 for(name, V3DGENERATORS) {
   HEADERS += v3dgenerators/v3dgen_$${name}.h
   SOURCES += v3dgenerators/v3dgen_$${name}.cpp
+}
+for(name, COLORGENERATORS) {
+  HEADERS += colorgenerators/colorgen_$${name}.h
+  SOURCES += colorgenerators/colorgen_$${name}.cpp
 }

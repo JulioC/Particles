@@ -49,13 +49,13 @@ bool Zone_Cone::inside(const Vector3D &point) {
 }
 
 Vector3D Zone_Cone::point() {
-  Vector3D res = _axis[0];
+  Vector3D res(0, 0, 0);
 
   float theta = Random::value(TWOPI);
   float omega = Random::ranged(_angleMin, _angleRange);
   float sin_omega = sin(omega);
 
-  res *= cos(omega);
+  res += _axis[0] * cos(omega);
   res += _axis[1] * cos(theta) * sin_omega;
   res += _axis[2] * sin(theta) * sin_omega;
 

@@ -16,17 +16,6 @@ V3DGen_Sphere::V3DGen_Sphere(const Vector3D &center, float radiusMin, float radi
 V3DGen_Sphere::~V3DGen_Sphere() {
 }
 
-bool V3DGen_Sphere::inside(const Vector3D &point) {
-  Vector3D dist = point - _center;
-  float len = dist.length();
-
-  if(len - _radiusMin > _radiusRange) {
-    return false;
-  }
-
-  return true;
-}
-
 Vector3D V3DGen_Sphere::point() {
   float theta = Random::value(TWOPI);
   float omega = Random::value(TWOPI);

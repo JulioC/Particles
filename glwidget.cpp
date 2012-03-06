@@ -18,6 +18,7 @@
 #include "initializers/init_color.h"
 #include "initializers/init_direction.h"
 #include "initializers/init_lifetime.h"
+#include "initializers/init_position.h"
 #include "initializers/init_radius.h"
 #include "initializers/init_speed.h"
 #include "initializers/init_speedoffset.h"
@@ -29,6 +30,7 @@
 
 #include "v3dgenerators/v3dgen_box.h"
 #include "v3dgenerators/v3dgen_cone.h"
+#include "v3dgenerators/v3dgen_cylinder.h"
 #include "v3dgenerators/v3dgen_point.h"
 #include "v3dgenerators/v3dgen_sphere.h"
 
@@ -77,7 +79,7 @@ void GLWidget::animate() {
     _emitters[i]->update(elapsed);
   }
 
-  _camera.rotate(0, 0.1);
+  _camera.rotate(0, 36 * elapsed);
 
   updateGL();
 }
@@ -106,9 +108,9 @@ void GLWidget::initializeGL() {
 
   _emitters[0]->addInitializer(new Init_Lifetime(4, 2));
   _emitters[0]->addInitializer(new Init_Color(Color(40, 40, 100, 0.1), Color(80, 90, 120, 0.8)));
-  _emitters[0]->addInitializer(new Init_Speed(0.8, 0.8));
+  _emitters[0]->addInitializer(new Init_Speed(0.6, 0.8));
   _emitters[0]->addInitializer(new Init_Radius(2.5, 1.5));
-  // _emitters[0]->addInitializer(new Init_PositionRing(Vector3D(0, 0, 0), Vector3D(0, 0, 1), 0.05, 0));
+  _emitters[0]->addInitializer(new Init_Position(new V3DGen_Cylinder(Vector3D(0, 0, 0), Vector3D(0, 1, 0), 0, 0, 0.01, 0.04)));
   _emitters[0]->addInitializer(new Init_Direction(new V3DGen_Cone(Vector3D(0, 0, 0), Vector3D(0, 1, 0), 25, 35)));
   // _emitters[0]->addInitializer(new Init_Direction(new V3DGen_Point(Vector3D(0, 1, 0))));
 

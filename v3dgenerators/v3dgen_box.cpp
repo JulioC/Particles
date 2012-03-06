@@ -11,12 +11,6 @@ V3DGen_Box::V3DGen_Box(const Vector3D &min, const Vector3D &max) :
 V3DGen_Box::~V3DGen_Box() {
 }
 
-bool V3DGen_Box::inside(const Vector3D &point) {
-  //@TODO: implement
-
-  return true;
-}
-
 Vector3D V3DGen_Box::point() {
   float x, y, z;
   x = Random::ranged(_min.x, _range.x);

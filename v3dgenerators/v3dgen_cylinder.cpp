@@ -6,10 +6,14 @@
 
 const float V3DGen_Cylinder::TWOPI = M_PI * 2;
 
-V3DGen_Cylinder::V3DGen_Cylinder(const Vector3D &bottom, const Vector3D &top, float radiusMin, float radiusMax) :
+V3DGen_Cylinder::V3DGen_Cylinder(const Vector3D &bottom, const Vector3D &top,
+                                 float lengthMin, float lengthMax,
+                                 float radiusMin, float radiusMax) :
   V3DGenerator(),
   _bottom(bottom),
   _axis(),
+  _lengthMin(lengthMin),
+  _lengthRange(lengthMax - lengthMin),
   _radiusMin(radiusMin),
   _radiusRange(radiusMax - radiusMin) {
   // Get our coord axis
@@ -30,19 +34,13 @@ V3DGen_Cylinder::V3DGen_Cylinder(const Vector3D &bottom, const Vector3D &top, fl
 V3DGen_Cylinder::~V3DGen_Cylinder() {
 }
 
-bool V3DGen_Cylinder::inside(const Vector3D &point) {
-  //@TODO: implement
-
-  return true;
-}
-
 Vector3D V3DGen_Cylinder::point() {
   Vector3D res(0, 0, 0);
 
   float theta = Random::value(TWOPI);
   float radius = Random::ranged(_radiusMin, _radiusRange);
 
-  res += _axis[0] * Random::value();
+  res += _axis[0] * Random::ranged(_lengthMin, _lengthRange);
   res += _axis[1] * cos(theta) * radius;
   res += _axis[2] * sin(theta) * radius;
 

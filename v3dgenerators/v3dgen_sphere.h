@@ -8,7 +8,6 @@ public:
   V3DGen_Sphere(const Vector3D &center, float radiusMin = 0, float radiusMax = 1);
   virtual ~V3DGen_Sphere();
 
-  virtual bool inside(const Vector3D &point);
   virtual Vector3D point();
 
 protected:

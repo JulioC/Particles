@@ -11,7 +11,6 @@ public:
               float radiusMin = 0, float radiusMax = 1);
   virtual ~V3DGen_Cone();
 
-  virtual bool inside(const Vector3D &point);
   virtual Vector3D point();
 
 protected:

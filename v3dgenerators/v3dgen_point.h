@@ -8,7 +8,6 @@ public:
   V3DGen_Point(const Vector3D &position);
   virtual ~V3DGen_Point();
 
-  virtual bool inside(const Vector3D &point);
   virtual Vector3D point();
 
 protected:

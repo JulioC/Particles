@@ -35,19 +35,6 @@ V3DGen_Cone::V3DGen_Cone(const Vector3D &center,
 V3DGen_Cone::~V3DGen_Cone() {
 }
 
-bool V3DGen_Cone::inside(const Vector3D &point) {
-  Vector3D dist = point - _center;
-  float len = dist.length();
-
-  if(len - _radiusMin > _radiusRange) {
-    return false;
-  }
-
-  //@TODO: check if the particle is inside an angle
-
-  return true;
-}
-
 Vector3D V3DGen_Cone::point() {
   Vector3D res(0, 0, 0);
 

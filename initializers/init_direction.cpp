@@ -1,22 +1,22 @@
 #include "init_direction.h"
 
 #include "particle.h"
-#include "zone.h"
+#include "v3dgenerator.h"
 
-Init_Direction::Init_Direction(Zone *zone, bool offset) :
+Init_Direction::Init_Direction(V3DGenerator *generator, bool offset) :
   Initializer(),
-  _zone(zone),
+  _generator(generator),
   _offset(offset) {
 }
 
 Init_Direction::~Init_Direction() {
-  if(_zone) {
-    delete _zone;
+  if(_generator) {
+    delete _generator;
   }
 }
 
 void Init_Direction::apply(Particle *p, Emitter *e) {
-  if(!_zone) {
+  if(!_generator) {
     return;
   }
 
@@ -26,7 +26,7 @@ void Init_Direction::apply(Particle *p, Emitter *e) {
     res = p->velocity.normalized();
   }
 
-  res += _zone->point().normalized();
+  res += _generator->point().normalized();
   res.normalize();
 
   p->velocity = res * speed;

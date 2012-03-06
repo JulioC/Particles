@@ -1,23 +1,23 @@
-#include "zone_box.h"
+#include "v3dgen_box.h"
 
 #include "random.h"
 
-Zone_Box::Zone_Box(const Vector3D &min, const Vector3D &max) :
-  Zone(),
+V3DGen_Box::V3DGen_Box(const Vector3D &min, const Vector3D &max) :
+  V3DGenerator(),
   _min(min),
   _range(max - min) {
 }
 
-Zone_Box::~Zone_Box() {
+V3DGen_Box::~V3DGen_Box() {
 }
 
-bool Zone_Box::inside(const Vector3D &point) {
+bool V3DGen_Box::inside(const Vector3D &point) {
   //@TODO: implement
 
   return true;
 }
 
-Vector3D Zone_Box::point() {
+Vector3D V3DGen_Box::point() {
   float x, y, z;
   x = Random::ranged(_min.x, _range.x);
   y = Random::ranged(_min.y, _range.y);

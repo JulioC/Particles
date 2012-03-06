@@ -4,17 +4,17 @@
 #include "initializer.h"
 #include "vector3d.h"
 
-class Zone;
+class V3DGenerator;
 
 class Init_Position : public Initializer {
 public:
-  Init_Position(Zone *zone, bool offset = false);
+  Init_Position(V3DGenerator *generator, bool offset = false);
   virtual ~Init_Position();
 
   virtual void apply(Particle *p, Emitter *e = 0);
 
 protected:
-  Zone *_zone;
+  V3DGenerator *_generator;
   bool _offset;
 };
 

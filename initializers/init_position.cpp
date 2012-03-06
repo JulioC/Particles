@@ -1,22 +1,22 @@
 #include "init_position.h"
 
 #include "particle.h"
-#include "zone.h"
+#include "v3dgenerator.h"
 
-Init_Position::Init_Position(Zone *zone, bool offset) :
+Init_Position::Init_Position(V3DGenerator *generator, bool offset) :
   Initializer(),
-  _zone(zone),
+  _generator(generator),
   _offset(offset) {
 }
 
 Init_Position::~Init_Position() {
-  if(_zone) {
-    delete _zone;
+  if(_generator) {
+    delete _generator;
   }
 }
 
 void Init_Position::apply(Particle *p, Emitter *e) {
-  if(!_zone) {
+  if(!_generator) {
     return;
   }
 
@@ -25,7 +25,7 @@ void Init_Position::apply(Particle *p, Emitter *e) {
     res = p->position;
   }
 
-  res += _zone->point();
+  res += _generator->point();
 
   p->position = res;
 }

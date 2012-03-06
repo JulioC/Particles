@@ -1,22 +1,22 @@
-#include "zone_sphere.h"
+#include "v3dgen_sphere.h"
 
 #include <math.h>
 
 #include "random.h"
 
-const float Zone_Sphere::TWOPI = M_PI * 2;
+const float V3DGen_Sphere::TWOPI = M_PI * 2;
 
-Zone_Sphere::Zone_Sphere(const Vector3D &center, float radiusMin, float radiusMax) :
-  Zone(),
+V3DGen_Sphere::V3DGen_Sphere(const Vector3D &center, float radiusMin, float radiusMax) :
+  V3DGenerator(),
   _center(center),
   _radiusMin(radiusMin),
   _radiusRange(radiusMax - radiusMin) {
 }
 
-Zone_Sphere::~Zone_Sphere() {
+V3DGen_Sphere::~V3DGen_Sphere() {
 }
 
-bool Zone_Sphere::inside(const Vector3D &point) {
+bool V3DGen_Sphere::inside(const Vector3D &point) {
   Vector3D dist = point - _center;
   float len = dist.length();
 
@@ -27,7 +27,7 @@ bool Zone_Sphere::inside(const Vector3D &point) {
   return true;
 }
 
-Vector3D Zone_Sphere::point() {
+Vector3D V3DGen_Sphere::point() {
   float theta = Random::value(TWOPI);
   float omega = Random::value(TWOPI);
 

@@ -20,7 +20,7 @@ OPERATORS = \
   drag \
   fade
 
-ZONES = \
+V3DGENERATORS = \
   cone \
   sphere \
   box \
@@ -40,7 +40,7 @@ HEADERS += \
   color.h \
   camera.h \
   random.h \
-  zone.h
+  v3dgenerator.h
 
 SOURCES += \
   particle.cpp \
@@ -76,7 +76,7 @@ for(name, OPERATORS) {
   HEADERS += operators/oper_$${name}.h
   SOURCES += operators/oper_$${name}.cpp
 }
-for(name, ZONES) {
-  HEADERS += zones/zone_$${name}.h
-  SOURCES += zones/zone_$${name}.cpp
+for(name, V3DGENERATORS) {
+  HEADERS += v3dgenerators/v3dgen_$${name}.h
+  SOURCES += v3dgenerators/v3dgen_$${name}.cpp
 }

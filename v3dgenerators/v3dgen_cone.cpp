@@ -1,16 +1,16 @@
-#include "zone_cone.h"
+#include "v3dgen_cone.h"
 
 #include <math.h>
 
 #include "random.h"
 
-const float Zone_Cone::TWOPI = M_PI * 2;
+const float V3DGen_Cone::TWOPI = M_PI * 2;
 
-Zone_Cone::Zone_Cone(const Vector3D &center,
+V3DGen_Cone::V3DGen_Cone(const Vector3D &center,
               const Vector3D &top,
               float angleMin, float angleMax,
               float radiusMin, float radiusMax) :
-  Zone(),
+  V3DGenerator(),
   _center(center),
   _axis(),
   _angleMin(TWOPI * angleMin / 360),
@@ -32,10 +32,10 @@ Zone_Cone::Zone_Cone(const Vector3D &center,
   _axis[2].normalize();
 }
 
-Zone_Cone::~Zone_Cone() {
+V3DGen_Cone::~V3DGen_Cone() {
 }
 
-bool Zone_Cone::inside(const Vector3D &point) {
+bool V3DGen_Cone::inside(const Vector3D &point) {
   Vector3D dist = point - _center;
   float len = dist.length();
 
@@ -48,7 +48,7 @@ bool Zone_Cone::inside(const Vector3D &point) {
   return true;
 }
 
-Vector3D Zone_Cone::point() {
+Vector3D V3DGen_Cone::point() {
   Vector3D res(0, 0, 0);
 
   float theta = Random::value(TWOPI);

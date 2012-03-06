@@ -1,13 +1,13 @@
-#include "zone_cylinder.h"
+#include "v3dgen_cylinder.h"
 
 #include <math.h>
 
 #include "random.h"
 
-const float Zone_Cylinder::TWOPI = M_PI * 2;
+const float V3DGen_Cylinder::TWOPI = M_PI * 2;
 
-Zone_Cylinder::Zone_Cylinder(const Vector3D &bottom, const Vector3D &top, float radiusMin, float radiusMax) :
-  Zone(),
+V3DGen_Cylinder::V3DGen_Cylinder(const Vector3D &bottom, const Vector3D &top, float radiusMin, float radiusMax) :
+  V3DGenerator(),
   _bottom(bottom),
   _axis(),
   _radiusMin(radiusMin),
@@ -27,16 +27,16 @@ Zone_Cylinder::Zone_Cylinder(const Vector3D &bottom, const Vector3D &top, float 
   _axis[2].normalize();
 }
 
-Zone_Cylinder::~Zone_Cylinder() {
+V3DGen_Cylinder::~V3DGen_Cylinder() {
 }
 
-bool Zone_Cylinder::inside(const Vector3D &point) {
+bool V3DGen_Cylinder::inside(const Vector3D &point) {
   //@TODO: implement
 
   return true;
 }
 
-Vector3D Zone_Cylinder::point() {
+Vector3D V3DGen_Cylinder::point() {
   Vector3D res(0, 0, 0);
 
   float theta = Random::value(TWOPI);

@@ -21,18 +21,16 @@
 #include "initializers/init_radius.h"
 #include "initializers/init_speed.h"
 #include "initializers/init_speedoffset.h"
-#include "initializers/init_positionoffset.h"
-#include "initializers/init_positionring.h"
 
 #include "operators/oper_acceleration.h"
 #include "operators/oper_decay.h"
 #include "operators/oper_drag.h"
 #include "operators/oper_fade.h"
 
-#include "zones/zone_box.h"
-#include "zones/zone_cone.h"
-#include "zones/zone_point.h"
-#include "zones/zone_sphere.h"
+#include "v3dgenerators/v3dgen_box.h"
+#include "v3dgenerators/v3dgen_cone.h"
+#include "v3dgenerators/v3dgen_point.h"
+#include "v3dgenerators/v3dgen_sphere.h"
 
 GLWidget::GLWidget(QWidget *parent) :
   QGLWidget(parent),
@@ -110,8 +108,9 @@ void GLWidget::initializeGL() {
   _emitters[0]->addInitializer(new Init_Color(Color(40, 40, 100, 0.1), Color(80, 90, 120, 0.8)));
   _emitters[0]->addInitializer(new Init_Speed(0.8, 0.8));
   _emitters[0]->addInitializer(new Init_Radius(2.5, 1.5));
-  _emitters[0]->addInitializer(new Init_PositionRing(Vector3D(0, 0, 0), Vector3D(0, 0, 1), 0.05, 0));
-  _emitters[0]->addInitializer(new Init_Direction(new Zone_Cone(Vector3D(0, 0, 0), Vector3D(0, 1, 0), 25, 35)));
+  // _emitters[0]->addInitializer(new Init_PositionRing(Vector3D(0, 0, 0), Vector3D(0, 0, 1), 0.05, 0));
+  _emitters[0]->addInitializer(new Init_Direction(new V3DGen_Cone(Vector3D(0, 0, 0), Vector3D(0, 1, 0), 25, 35)));
+  // _emitters[0]->addInitializer(new Init_Direction(new V3DGen_Point(Vector3D(0, 1, 0))));
 
   _emitters[0]->addOperator(new Oper_Decay());
   _emitters[0]->addOperator(new Oper_Acceleration(Vector3D(0, -0.4, 0)));

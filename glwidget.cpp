@@ -45,11 +45,15 @@ GLWidget::~GLWidget() {
 }
 
 QSize GLWidget::minimumSizeHint() const {
-  return QSize(80, 60);
+  return QSize(80, 80);
 }
 
 QSize GLWidget::sizeHint() const {
   return QSize(600, 600);
+}
+
+int GLWidget::getVertexCount() const {
+  return _renderer->vertexCount();
 }
 
 int GLWidget::addEmitter(Emitter *emitter) {

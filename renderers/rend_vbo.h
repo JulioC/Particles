@@ -19,6 +19,8 @@ public:
   void clear();
   void draw();
 
+  int vertexCount() { return _curVertex; }
+
 protected:
   void vertex(const Vector3D &position, const Color &color);
 

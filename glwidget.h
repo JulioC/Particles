@@ -29,6 +29,7 @@ public:
   QSize sizeHint() const;
 
   float getFPS() { return _timer.fps(); }
+  int getVertexCount() const;
 
   int addEmitter(Emitter *emitter);
   void removeEmitter(int index);

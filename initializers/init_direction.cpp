@@ -10,9 +10,6 @@ Init_Direction::Init_Direction(V3DGenerator *generator, bool offset) :
 }
 
 Init_Direction::~Init_Direction() {
-  if(_generator) {
-    delete _generator;
-  }
 }
 
 void Init_Direction::apply(Particle *p, Emitter *e) {

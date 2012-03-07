@@ -40,22 +40,6 @@ Emitter::~Emitter() {
     }
   }
   delete[] _particles;
-
-  for(int i = 0; i < MAX_INITIALIZERS; i++) {
-    if(_initializers[i]) {
-      delete _initializers[i];
-      _initializers[i] = NULL;
-    }
-  }
-  delete[] _initializers;
-
-  for(int i = 0; i < MAX_OPERATORS; i++) {
-    if(_operators[i]) {
-      delete _operators[i];
-      _operators[i] = NULL;
-    }
-  }
-  delete[] _operators;
 }
 
 void Emitter::update(float elapsed) {

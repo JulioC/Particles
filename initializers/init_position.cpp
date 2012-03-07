@@ -10,9 +10,6 @@ Init_Position::Init_Position(V3DGenerator *generator, bool offset) :
 }
 
 Init_Position::~Init_Position() {
-  if(_generator) {
-    delete _generator;
-  }
 }
 
 void Init_Position::apply(Particle *p, Emitter *e) {

@@ -11,6 +11,9 @@
 #include "color.h"
 #include "emitter.h"
 
+#include "camera.h"
+#include "camerashader.h"
+
 #include "renderers/rend_point.h"
 #include "renderers/rend_sphere.h"
 #include "renderers/rend_square.h"
@@ -83,7 +86,7 @@ void GLWidget::animate() {
     _emitters[i]->update(elapsed);
   }
 
-  // _camera.rotate(0, 36 * elapsed);
+  _camera->rotate(0, 36 * elapsed);
 
   updateGL();
 }
@@ -91,9 +94,9 @@ void GLWidget::animate() {
 void GLWidget::initializeGL() {
   glClearColor(.0, .0, .0, 1.0);
   glShadeModel(GL_FLAT);
+
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_CULL_FACE);
-
   glEnable( GL_BLEND );
   glBlendFunc( GL_SRC_ALPHA, GL_ONE );
 
@@ -103,7 +106,8 @@ void GLWidget::initializeGL() {
 
   initShaders();
 
-  _camera.rotate(30, -20);
+  _camera = new CameraShader(_shaderProgram);
+  _camera->rotate(30, -20);
 
   _VBO = new Rend_VBO(10000, _shaderProgram);
 
@@ -223,12 +227,7 @@ void GLWidget::initializeGL() {
 void GLWidget::paintGL() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  glPushMatrix();
-
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-
-  _camera.apply();
+  _camera->apply();
 
   drawAxis();
 
@@ -239,8 +238,6 @@ void GLWidget::paintGL() {
     _emitters[i]->draw();
   }
   _VBO->draw();
-
-  glPopMatrix();
 }
 
 void GLWidget::resizeGL(int w, int h) {

@@ -33,7 +33,7 @@ public slots:
   virtual void animate();
 
 protected:
-  Camera _camera;
+  Camera *_camera;
 
   Timer _timer;
   QTimer *_qtimer;

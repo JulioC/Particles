@@ -46,6 +46,7 @@ HEADERS += \
   timer.h \
   color.h \
   camera.h \
+  camerashader.h \
   random.h \
   v3dgenerator.h \
   colorgenerator.h
@@ -60,6 +61,7 @@ SOURCES += \
   timer.cpp \
   color.cpp \
   camera.cpp \
+  camerashader.cpp \
   random.cpp
 
 RESOURCES += \

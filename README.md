@@ -1,8 +1,7 @@
 Particles
 =========
 
-Simple particle system built with OpenGL and Qt, with support for Renderers, Intializers and Operators.
-
+Simple particle system built with OpenGL and Qt, with support for Renderers, Intializers and Operators for a class assignment.
 
 References
 ----------

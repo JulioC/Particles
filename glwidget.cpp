@@ -90,9 +90,19 @@ void GLWidget::animate() {
     }
   }
 
-  _camera->rotate(0, 18 * elapsed);
-
   updateGL();
+}
+
+void GLWidget::setPitch(int val) {
+  _camera->pitch(val);
+}
+
+void GLWidget::setYaw(int val) {
+  _camera->yaw(val);
+}
+
+void GLWidget::setRoll(int val) {
+  _camera->roll(val);
 }
 
 void GLWidget::initializeGL() {
@@ -111,8 +121,6 @@ void GLWidget::initializeGL() {
   initShaders();
 
   _camera = new CameraShader(_shaderProgram);
-  _camera->rotate(30, -20);
-
   _renderer = new Rend_VBO(MAX_VERTEXES, _shaderProgram);
 }
 

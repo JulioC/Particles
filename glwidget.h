@@ -36,6 +36,9 @@ public:
 
 public slots:
   virtual void animate();
+  void setPitch(int val);
+  void setYaw(int val);
+  void setRoll(int val);
 
 protected:
   Camera *_camera;

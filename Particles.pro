@@ -3,7 +3,8 @@ QT += core gui opengl
 RENDERERS = \
   point \
   sphere \
-  square
+  square \
+  vbo
 
 INITIALIZERS = \
   lifetime \

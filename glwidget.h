@@ -15,6 +15,8 @@ class QGLShader;
 class QGLShader;
 class QGLShaderProgram;
 
+class Rend_VBO;
+
 class GLWidget : public QGLWidget {
   Q_OBJECT
 
@@ -39,6 +41,8 @@ protected:
   QGLShader *_vertShader;
   QGLShader *_fragShader;
   QGLShaderProgram *_shaderProgram;
+
+  Rend_VBO *_VBO;
 
   int _emitterCount;
   Emitter* _emitters[10];

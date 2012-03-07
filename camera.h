@@ -16,7 +16,7 @@ public:
   virtual void move_forwards(float distance);
   virtual void move_right(float distance);
 
-private:
+protected:
   Vector3D _position;
   Vector3D _direction;
 

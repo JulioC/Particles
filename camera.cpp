@@ -12,6 +12,9 @@ Camera::Camera() :
   _roll(0) {
 }
 
+Camera::~Camera() {
+}
+
 void Camera::apply() {
   glRotatef(-_pitch , 1.0, 0.0, 0.0);
   glRotatef(-_yaw , 0.0, 1.0, 0.0);

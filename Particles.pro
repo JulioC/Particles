@@ -25,11 +25,13 @@ V3DGENERATORS = \
   sphere \
   box \
   point \
-  cylinder
+  cylinder \
+  list
 
 COLORGENERATORS = \
   constant \
-  range
+  range \
+  list
 
 HEADERS += \
   particle.h \

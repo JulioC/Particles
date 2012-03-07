@@ -49,7 +49,10 @@ HEADERS += \
   camerashader.h \
   random.h \
   v3dgenerator.h \
-  colorgenerator.h
+  colorgenerator.h \
+  testbed.h \
+  emitterspanel.h \
+    emittercontroller.h
 
 SOURCES += \
   particle.cpp \
@@ -62,7 +65,10 @@ SOURCES += \
   color.cpp \
   camera.cpp \
   camerashader.cpp \
-  random.cpp
+  random.cpp \
+  testbed.cpp \
+  emitterspanel.cpp \
+    emittercontroller.cpp
 
 RESOURCES += \
   resources.qrc
@@ -94,3 +100,8 @@ for(name, COLORGENERATORS) {
   HEADERS += colorgenerators/colorgen_$${name}.h
   SOURCES += colorgenerators/colorgen_$${name}.cpp
 }
+
+FORMS += \
+  testbed.ui \
+  emitterspanel.ui \
+    emittercontroller.ui

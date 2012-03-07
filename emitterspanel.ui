@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EmittersPanel</class>
+ <widget class="QWidget" name="EmittersPanel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>441</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Add emitter:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonFire">
+       <property name="text">
+        <string>Fire</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonSmoke">
+       <property name="text">
+        <string>Smoke</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonWater">
+       <property name="text">
+        <string>Water</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonDefault">
+       <property name="text">
+        <string>Custom</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabs">
+     <property name="tabPosition">
+      <enum>QTabWidget::North</enum>
+     </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
+     </property>
+     <property name="currentIndex">
+      <number>-1</number>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>4</width>
+       <height>4</height>
+      </size>
+     </property>
+     <property name="elideMode">
+      <enum>Qt::ElideNone</enum>
+     </property>
+     <property name="documentMode">
+      <bool>false</bool>
+     </property>
+     <property name="tabsClosable">
+      <bool>true</bool>
+     </property>
+     <property name="movable">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonFire</sender>
+   <signal>clicked()</signal>
+   <receiver>EmittersPanel</receiver>
+   <slot>createFire()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>157</x>
+     <y>26</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>101</x>
+     <y>2</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonWater</sender>
+   <signal>clicked()</signal>
+   <receiver>EmittersPanel</receiver>
+   <slot>createWater()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>270</x>
+     <y>24</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>5</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonDefault</sender>
+   <signal>clicked()</signal>
+   <receiver>EmittersPanel</receiver>
+   <slot>createController()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>297</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonSmoke</sender>
+   <signal>clicked()</signal>
+   <receiver>EmittersPanel</receiver>
+   <slot>createSmoke()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>193</x>
+     <y>25</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>84</x>
+     <y>39</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tabs</sender>
+   <signal>tabCloseRequested(int)</signal>
+   <receiver>EmittersPanel</receiver>
+   <slot>closeTab(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>235</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>182</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>createFire()</slot>
+  <slot>createWater()</slot>
+  <slot>createController()</slot>
+  <slot>createSmoke()</slot>
+  <slot>closeTab(int)</slot>
+ </slots>
+</ui>

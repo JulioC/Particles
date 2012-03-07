@@ -3,11 +3,11 @@
  */
 #include <QApplication>
 
-#include "window.h"
+#include "testbed.h"
 
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
-  Window window;
+  TestBed window;
   window.show();
   return app.exec();
 }

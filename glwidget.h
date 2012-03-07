@@ -3,18 +3,19 @@
 
 #include <QGLWidget>
 
-#include "camera.h"
 #include "timer.h"
 #include "vector3d.h"
 
-class Emitter;
-
+#define MAX_EMITTERS 16
+#define MAX_VERTEXES 20000
 class QTimer;
 
 class QGLShader;
 class QGLShader;
 class QGLShaderProgram;
 
+class Camera;
+class Emitter;
 class Rend_VBO;
 
 class GLWidget : public QGLWidget {
@@ -29,6 +30,9 @@ public:
 
   float getFPS() { return _timer.fps(); }
 
+  int addEmitter(Emitter *emitter);
+  void removeEmitter(int index);
+
 public slots:
   virtual void animate();
 
@@ -42,23 +46,20 @@ protected:
   QGLShader *_fragShader;
   QGLShaderProgram *_shaderProgram;
 
-  Rend_VBO *_VBO;
+  Rend_VBO *_renderer;
 
   int _emitterCount;
-  Emitter* _emitters[10];
+  Emitter* _emitters[MAX_EMITTERS];
 
   void initializeGL();
   void paintGL();
   void resizeGL(int width, int height);
 
-  void keyPressEvent(QKeyEvent *event);
-
   void initShaders();
 
-  void showFPS();
   void drawAxis(float len = 1.0);
 
-  void perspective(double fovY, double aspect, double zNear, double zFar);
+  void projection(int width, int height, float size = 1.2);
 
 };
 

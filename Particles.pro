@@ -28,7 +28,8 @@ V3DGENERATORS = \
   cylinder
 
 COLORGENERATORS = \
-  constant
+  constant \
+  range
 
 HEADERS += \
   particle.h \

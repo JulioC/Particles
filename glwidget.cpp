@@ -43,10 +43,24 @@ GLWidget::~GLWidget() {
   if(_qtimer) {
     delete _qtimer;
   }
+
+  if(_shaderProgram) {
+    delete _shaderProgram;
+  }
+
+  if(_vertShader) {
+    delete _vertShader;
+  }
+
+  if(_fragShader) {
+    delete _fragShader;
+  }
+
   if(_axisVertexes) {
     _axisVertexes->destroy();
     delete _axisVertexes;
   }
+
   if(_axisColors) {
     _axisColors->destroy();
     delete _axisColors;

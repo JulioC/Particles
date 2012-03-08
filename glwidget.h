@@ -10,6 +10,7 @@
 #define MAX_VERTEXES 20000
 class QTimer;
 
+class QGLBuffer;
 class QGLShader;
 class QGLShader;
 class QGLShaderProgram;
@@ -60,10 +61,15 @@ protected:
   void resizeGL(int width, int height);
 
   void initShaders();
+  void createAxis();
 
   void drawAxis(float len = 1.0);
 
   void projection(int width, int height, float size = 1.2);
+
+  QGLBuffer *_axisVertexes;
+  QGLBuffer *_axisColors;
+
 
 };
 

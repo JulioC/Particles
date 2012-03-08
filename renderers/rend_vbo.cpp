@@ -13,9 +13,9 @@
 
 Rend_VBO::Rend_VBO(int maxVertex, QGLShaderProgram *shaderProgram) :
   Renderer(),
+  _drawMode(GL_POINTS),
   _maxVertex(maxVertex),
   _curVertex(0),
-  _drawMode(GL_POINTS),
   _shaderProgram(shaderProgram) {
 
   _vboVertexes = new QGLBuffer(QGLBuffer::VertexBuffer);
@@ -32,6 +32,14 @@ Rend_VBO::Rend_VBO(int maxVertex, QGLShaderProgram *shaderProgram) :
 }
 
 Rend_VBO::~Rend_VBO() {
+  if(_vboVertexes) {
+    _vboVertexes->destroy();
+    delete _vboVertexes;
+  }
+  if(_vboColors) {
+    _vboColors->destroy();
+    delete _vboColors;
+  }
 }
 
 void Rend_VBO::render(Particle *p) {

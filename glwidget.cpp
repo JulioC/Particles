@@ -5,6 +5,7 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <QVector3D>
+#include <QGLBuffer>
 #include <QGLShader>
 #include <QGLShaderProgram>
 
@@ -41,6 +42,14 @@ GLWidget::GLWidget(QWidget *parent) :
 GLWidget::~GLWidget() {
   if(_qtimer) {
     delete _qtimer;
+  }
+  if(_axisVertexes) {
+    _axisVertexes->destroy();
+    delete _axisVertexes;
+  }
+  if(_axisColors) {
+    _axisColors->destroy();
+    delete _axisColors;
   }
 }
 
@@ -120,6 +129,8 @@ void GLWidget::initializeGL() {
 
   initShaders();
 
+  createAxis();
+
   _camera = new CameraShader(_shaderProgram);
   _renderer = new Rend_VBO(MAX_VERTEXES, _shaderProgram);
 }
@@ -129,10 +140,9 @@ void GLWidget::paintGL() {
 
   _camera->apply();
 
-  drawAxis();
-
   glPointSize(4.0);
 
+  drawAxis();
   _renderer->clear();
   for(int i = 0; i < MAX_EMITTERS; i++) {
     if(_emitters[i]) {
@@ -171,25 +181,45 @@ void GLWidget::initShaders() {
   }
 }
 
+void GLWidget::createAxis() {
+  Vector3D v[6];
+  Color c[6];
+
+  v[0] = Vector3D(0, 0, 0);
+  v[1] = Vector3D(1, 0, 0);
+  c[0] = c[1] = Color(255, 0, 0);
+
+  v[2] = Vector3D(0, 0, 0);
+  v[3] = Vector3D(0, 1, 0);
+  c[2] = c[3] = Color(0, 255, 0);
+
+  v[4] = Vector3D(0, 0, 0);
+  v[5] = Vector3D(0, 0, 1);
+  c[4] = c[5] = Color(0, 0, 255);
+
+  _axisVertexes = new QGLBuffer(QGLBuffer::VertexBuffer);
+  _axisVertexes->create();
+  _axisVertexes->bind();
+  _axisVertexes->setUsagePattern(QGLBuffer::DynamicDraw);
+  _axisVertexes->allocate(v, 6 * sizeof(Vector3D));
+
+  _axisColors = new QGLBuffer(QGLBuffer::VertexBuffer);
+  _axisColors->create();
+  _axisColors->bind();
+  _axisColors->setUsagePattern(QGLBuffer::DynamicDraw);
+  _axisColors->allocate(c,  6 * sizeof(Color));
+}
+
 void GLWidget::drawAxis(float len) {
-  //@TODO: we should use VBO here
+  _axisVertexes->bind();
+  _shaderProgram->enableAttributeArray("vPosition");
+  _shaderProgram->setAttributeBuffer("vPosition", GL_FLOAT, 0, 3, 0);
 
-  glColor3f(0.4, 0.4, 0.4);
+  _axisColors->bind();
+  _shaderProgram->enableAttributeArray("vColor");
+  _shaderProgram->setAttributeBuffer("vColor", GL_FLOAT, 0, 4, 0);
 
-  glBegin(GL_LINES);
-    glVertex3f(0.0, 0.0, 0.0);
-    glVertex3f(len, 0.0, 0.0);
-  glEnd();
-
-  glBegin(GL_LINES);
-    glVertex3f(0.0, 0.0, 0.0);
-    glVertex3f(0.0, len, 0.0);
-  glEnd();
-
-  glBegin(GL_LINES);
-    glVertex3f(0.0, 0.0, 0.0);
-    glVertex3f(0.0, 0.0, len);
-  glEnd();
+  glDrawArrays(GL_LINES, 0, 6);
 }
 
 void GLWidget::projection(int width, int height, float size) {

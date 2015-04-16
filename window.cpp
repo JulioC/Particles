@@ -1,6 +1,7 @@
 #include "window.h"
 
 #include <QtGui>
+#include <QHBoxLayout>
 
 Window::Window() :
   _glWidget(this),

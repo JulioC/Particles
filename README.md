@@ -1,6 +1,8 @@
 Particles
 =========
 
+![](https://raw.githubusercontent.com/JulioC/Particles/master/demo.gif)
+
 Simple particle system built with OpenGL and Qt, with support for Renderers, Intializers and Operators for a class assignment.
 
 The project was really funny to work with. It was the first time I was touching OpenGL.
